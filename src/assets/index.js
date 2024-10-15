@@ -1,10 +1,7 @@
-import brainwave from "./brainwave.svg";
+import dokuLogo from "./dokudok-logo.svg";
 import check from "./check.svg";
-import brainwaveSymbol from "./brainwave-symbol.svg";
-import brainwaveWhiteSymbol from "./brainwave-symbol-white.svg";
 import play from "./play.svg";
 import gradient from "./gradient.png";
-import smallSphere from "./4-small.png";
 import grid from "./grid.png";
 import check2 from "./check-02.svg";
 import loading1 from "./loading-01.svg";
@@ -19,16 +16,23 @@ import disc02 from "./disc-02.svg";
 import chromecast from "./chrome-cast.svg";
 import sliders04 from "./sliders-04.svg";
 import loading from "./loading.png";
-import background from "./background.jpg";
 
 import curve from "./hero/curve.png";
 import robot from "./hero/robot.jpg";
-import heroBackground from "./hero/hero-background.jpg";
+import generatingJournal from "./hero/genererer_journal.mp4";
 
 import curve1 from "./collaboration/curve-1.svg";
 import curve2 from "./collaboration/curve-2.svg";
 import discord from "./collaboration/discord.png";
 import figma from "./collaboration/figma.png";
+import mic from "./collaboration/mic.png";
+import stethoscope from "./collaboration/stethoscope.png";
+import doc from "./collaboration/doc.png";
+import aiBrain from "./collaboration/ai_brain.png";
+import cyberShield from "./collaboration/cyber-shield.png";
+import noCloud from "./collaboration/noCloud.png";
+import clock from "./collaboration/clock.png";
+import speechRecognition from "./collaboration/speech-recognition.png";
 import framer from "./collaboration/framer.png";
 import notion from "./collaboration/notion.png";
 import photoshop from "./collaboration/photoshop.png";
@@ -42,20 +46,6 @@ import service3 from "./services/service-3.png";
 
 import lines from "./pricing/lines.svg";
 import stars from "./pricing/stars.svg";
-
-import coins from "./roadmap/coins.png";
-import done from "./roadmap/done.svg";
-import hero from "./roadmap/hero.png";
-import roadmap1 from "./roadmap/image-1.png";
-import roadmap2 from "./roadmap/image-2.png";
-import roadmap3 from "./roadmap/image-3.png";
-import roadmap4 from "./roadmap/image-4.png";
-import undone from "./roadmap/undone.svg";
-
-import notification1 from "./notification/image-1.png";
-import notification2 from "./notification/image-2.png";
-import notification3 from "./notification/image-3.png";
-import notification4 from "./notification/image-4.png";
 
 import benefitCard1 from "./benefits/card-1.svg";
 import benefitCard2 from "./benefits/card-2.svg";
@@ -76,15 +66,12 @@ import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
 
 export {
-  brainwave,
+  dokuLogo,
   check,
   check2,
   loading1,
-  brainwaveSymbol,
-  brainwaveWhiteSymbol,
   play,
   gradient,
-  smallSphere,
   grid,
   yourlogo,
   homeSmile,
@@ -97,14 +84,21 @@ export {
   chromecast,
   sliders04,
   loading,
-  background,
   curve,
   robot,
-  heroBackground,
+  generatingJournal,
   curve1,
   curve2,
   discord,
   figma,
+  mic,
+  doc,
+  cyberShield,
+  noCloud,
+  clock,
+  speechRecognition,
+  stethoscope,
+  aiBrain,
   framer,
   notion,
   photoshop,
@@ -116,18 +110,6 @@ export {
   service3,
   lines,
   stars,
-  coins,
-  done,
-  hero,
-  roadmap1,
-  roadmap2,
-  roadmap3,
-  roadmap4,
-  undone,
-  notification1,
-  notification2,
-  notification3,
-  notification4,
   benefitCard1,
   benefitCard2,
   benefitCard3,
