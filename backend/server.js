@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';  // Use ES module import
-
 import dotenv from 'dotenv';
 dotenv.config();  // Load environment variables from .env file
 
@@ -16,17 +15,24 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // For parsing application/json
 
+// Serve the static files from the React frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../dist')));
+
+  // Serve the frontend's index.html for all non-API routes (React Router)
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+  });
+}
+
 // Get the whitelisted IPs from the environment variable and split into an array
 const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
 
-// console.log("Whitelisted IPs:", whitelistedIPs);
-
-// Endpoint to check if the user's IP is whitelisted
-app.post("/check-access", (req, res) => {
+// Backend API routes
+app.post("/api/check-access", (req, res) => {
   const { ip } = req.body;
   console.log(`Received IP: ${ip}`);
   
-  // Check if the user's IP is in the whitelisted IPs
   if (whitelistedIPs.includes(ip)) {
     return res.json({ hasAccess: true });
   } else {
@@ -34,8 +40,8 @@ app.post("/check-access", (req, res) => {
   }
 });
 
-// Endpoint to verify reCAPTCHA token
-app.post('/verify-recaptcha', async (req, res) => {
+// Example reCAPTCHA verification route
+app.post('/api/verify-recaptcha', async (req, res) => {
   const { token } = req.body;
 
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
@@ -48,16 +54,13 @@ app.post('/verify-recaptcha', async (req, res) => {
 
   const data = await response.json();
   if (data.success) {
-    // reCAPTCHA verified successfully
     res.json({ success: true });
   } else {
-    // reCAPTCHA failed
     res.json({ success: false });
   }
 });
 
-const port = process.env.PORT || 5000; // Ensure the port is properly defined
-
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

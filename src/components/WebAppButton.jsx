@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "./Button";  // Assuming the Button component is in the same folder
 import Modal from "./Modal";    // Import the Modal component
 
+const apiUrl = import.meta.env.VITE_API_URL || "/api";
+
 const WebAppButton = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -21,7 +23,7 @@ const WebAppButton = () => {
       console.log("User IP:", userIP);
 
       // Call your backend to validate the IP
-      const backendResponse = await fetch("http://localhost:5000/check-access", {
+      const backendResponse = await fetch(`${apiUrl}/check-access`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
