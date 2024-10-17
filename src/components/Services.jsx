@@ -1,6 +1,6 @@
 import Section from "./Section";
 import Heading from "./Heading";
-import { service1, service2, service3, check } from "../assets";
+import { service1, service2, service3, check, videoSearch } from "../assets";
 import { brainwaveServices, brainwaveServicesIcons } from "../constants";
 import {
   Gradient,
@@ -41,15 +41,30 @@ const Services = () => {
     </div>
 
     {/* Image with Rounded Corners */}
-    <div className="w-full">
-      <img
-        className="w-full h-auto object-cover rounded-2xl" // Ensures image has rounded corners
-        width={500} // Adjust width if needed
-        height={300} // Adjust height if needed
-        alt="Smartest AI"
-        src={service1}
-            />
+    <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient overflow-hidden">
+    {/* Outer container with rounded corners */}
+    <div className="relative bg-n-8 rounded-2xl overflow-hidden">
+      
+      {/* Header visible only on mobile and hidden on desktop */}
+      <div className="h-[0rem] bg-n-10 rounded-t-2xl md:hidden" />
+
+      {/* Make the video take up more width on mobile */}
+      <div className="h-auto w-full rounded-b-2xl overflow-hidden">
+        <video
+          className="w-full h-full object-contain" // Ensure video fits the box
+          width={1024}
+          height={600}
+          loop
+          autoPlay="autoplay"
+          playsInline
+          muted
+        >
+          <source src={videoSearch} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>

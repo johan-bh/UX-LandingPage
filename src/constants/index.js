@@ -65,12 +65,12 @@ export const navigation = [
     title: "Kontakt os",
     url: "#contact",
   },
-  // {
-  //   id: "5",
-  //   title: "Sign in",
-  //   url: "#login",
-  //   onlyMobile: true,
-  // },
+  {
+    id: "5",
+    title: "Sign in",
+    url: "#login",
+    onlyMobile: true,
+  },
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
@@ -130,7 +130,7 @@ export const brainwaveServicesIcons = [
 // ];
 
 export const collabText =
-  "Uanset om du bruger WinPLC, Clinea eller noget helt tredje, så kan vores løsning nemt anvendes i parallel og kræver minimal opsætning. Send blot jeres fraser interne forkortelser, så sørger vi for resten. Vi tilbyder desuden et stort frasekartotek, som kan tilpasses jeres klinik.";
+  "Uanset om du bruger WinPLC, Clinea eller noget helt tredje, så kan vores løsning nemt anvendes i parallel og kræver minimal opsætning. Send blot jeres frase og interne forkortelser, så sørger vi for resten. Vi tilbyder desuden et stort frasekartotek, som kan tilpasses jeres klinik.";
 
 export const collabText2 = 
  "Automatisér journalføringen med state-of-the-art talegenkendelse, der transskriberer præcist og hurtigt samt generativ AI baseret på dine kliniks egne fraser og forkotetelser. Vælg mellem post-konsulation diktering eller fuld transkribering af konsultationer (med patientens samtykke). Med denne løsning kan du flytte fokus fra notesblokken til patienten og spare tid på dokumentation.";
@@ -270,7 +270,7 @@ export const benefits = [
   {
     id: "2",
     title: "Høj sikkerhed og GDPR",
-    text: "Vi prioriterer patientsikkerhed og overholder de højeste sikkerhedsstandarder, så du kan stole på, at data håndteres korrekt. Vi opererer 100% i Danmark, opbevarer intet i skyen gør IKKE brug af trejdepartsløsninger.",
+    text: "Vi prioriterer patientsikkerhed og overholder de højeste sikkerhedsstandarder, så du kan stole på, at data håndteres korrekt. Vi opererer 100% i Danmark, opbevarer intet i skyen og gør IKKE brug af trejdepartsløsninger.",
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,

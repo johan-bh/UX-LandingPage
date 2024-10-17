@@ -19,7 +19,8 @@ import loading from "./loading.png";
 
 import curve from "./hero/curve.png";
 import robot from "./hero/robot.jpg";
-import generatingJournal from "./hero/genererer_journal.mp4";
+import generatingJournal from "./hero/JournalGeneration.mp4";
+import videoSearch from "./services//Demo-RAG.mp4";
 
 import curve1 from "./collaboration/curve-1.svg";
 import curve2 from "./collaboration/curve-2.svg";
@@ -87,6 +88,7 @@ export {
   curve,
   robot,
   generatingJournal,
+  videoSearch,
   curve1,
   curve2,
   discord,
