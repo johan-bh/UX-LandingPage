@@ -56,7 +56,8 @@ app.post('/verify-recaptcha', async (req, res) => {
   }
 });
 
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const port = process.env.PORT || 5000; // Ensure the port is properly defined
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
