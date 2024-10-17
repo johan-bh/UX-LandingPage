@@ -57,20 +57,10 @@ export const navigation = [
   },
   {
     id: "2",
-    title: "Priser",
-    url: "#pricing",
-  },
-  {
-    id: "3",
     title: "Kontakt os",
     url: "#contact",
   },
-  {
-    id: "5",
-    title: "Sign in",
-    url: "#login",
-    onlyMobile: true,
-  },
+  
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];

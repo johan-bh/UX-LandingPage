@@ -38,12 +38,12 @@ const WebAppButton = () => {
         window.location.href = "https://app.dokudok.dk/";
       } else {
         // Show modal with the "access denied" message
-        setMessage("Du har desværre ikke adgang til webappen. Kontakt support for mere information.");
+        setMessage("Du har desværre ikke adgang til webappen. Kontakt os for at få adgang.");
         setIsModalOpen(true);  // Open the modal
       }
     } catch (error) {
       console.error("Error fetching IP or checking access:", error);
-      setMessage("En fejl hændte. Prøv venligst igen senere.");
+      setMessage("En fejl opstod. Prøv igen senere.");
       setIsModalOpen(true);  // Open modal if an error occurs
     } finally {
       setLoading(false);
@@ -52,18 +52,14 @@ const WebAppButton = () => {
 
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <Button
-          className="hidden lg:flex"
-          onClick={handleCheckAccess}
-          white={false}
-          px="px-7"
-        >
-          Gå til webapp
-        </Button>
-      )}
+      <Button
+        className="hidden lg:flex"
+        onClick={handleCheckAccess}
+        white={false}
+        px="px-7"
+      >
+        {loading ? "Viderestiller.." : "Gå til webapp"}
+      </Button>
 
       {/* Modal component to display access messages */}
       <Modal
