@@ -4,6 +4,8 @@ import Modal from "./Modal";    // Import the Modal component
 
 const apiUrl = import.meta.env.VITE_API_URL || "/api";
 
+console.log("API URL:", apiUrl);
+
 const WebAppButton = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -13,26 +15,18 @@ const WebAppButton = () => {
   const handleCheckAccess = async () => {
     setLoading(true);
     setMessage(""); // Reset message
-
+  
     try {
-      // Fetch user IP address using a third-party API
-      const response = await fetch("https://api.ipify.org?format=json");
-      const data = await response.json();
-      const userIP = data.ip;
-
-      console.log("User IP:", userIP);
-
-      // Call your backend to validate the IP
+      // Call the backend directly to validate the user's IP
       const backendResponse = await fetch(`${apiUrl}/check-access`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ip: userIP }),
+        }
       });
-
+  
       const result = await backendResponse.json();
-
+  
       if (result.hasAccess) {
         // Redirect to the webapp if access is granted
         window.location.href = "https://app.dokudok.dk/";
@@ -42,13 +36,16 @@ const WebAppButton = () => {
         setIsModalOpen(true);  // Open the modal
       }
     } catch (error) {
-      console.error("Error fetching IP or checking access:", error);
+      console.error("Error checking access:", error);
       setMessage("En fejl opstod. Prøv igen senere.");
       setIsModalOpen(true);  // Open modal if an error occurs
     } finally {
       setLoading(false);
     }
   };
+  
+
+  
 
   return (
     <div>
@@ -58,7 +55,7 @@ const WebAppButton = () => {
         white={false}
         px="px-7"
       >
-        {loading ? "Viderestiller.." : "Gå til webapp"}
+        {loading ? "Viderestiller" : "Gå til webapp"}
       </Button>
 
       {/* Modal component to display access messages */}

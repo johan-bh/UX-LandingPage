@@ -28,17 +28,18 @@ if (process.env.NODE_ENV === 'production') {
 // Get the whitelisted IPs from the environment variable and split into an array
 const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
 
-// Backend API routes
 app.post("/api/check-access", (req, res) => {
-  const { ip } = req.body;
-  console.log(`Received IP: ${ip}`);
-  
-  if (whitelistedIPs.includes(ip)) {
+  const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log("User IP:", userIP);
+
+  const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
+  if (whitelistedIPs.includes(userIP)) {
     return res.json({ hasAccess: true });
   } else {
     return res.json({ hasAccess: false });
   }
 });
+
 
 // Example reCAPTCHA verification route
 app.post('/api/verify-recaptcha', async (req, res) => {
