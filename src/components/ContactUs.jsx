@@ -22,30 +22,30 @@ const ContactUs = () => {
     });
   };
 
-  // Function to send the reCAPTCHA token to the backend for verification
-  const verifyCaptcha = async (token) => {
-    try {
-      const response = await fetch("http://localhost:5000/verify-recaptcha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token }),
-      });
+  // // Function to send the reCAPTCHA token to the backend for verification
+  // const verifyCaptcha = async (token) => {
+  //   try {
+  //     const response = await fetch("http://localhost:5000/verify-recaptcha", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ token }),
+  //     });
 
-      const data = await response.json();
-      if (data.success) {
-        setCaptchaVerified(true);  // Mark captcha as verified
-        return true;
-      } else {
-        setCaptchaVerified(false);  // Mark captcha as not verified
-        return false;
-      }
-    } catch (error) {
-      console.error("Error verifying reCAPTCHA:", error);
-      return false;
-    }
-  };
+  //     const data = await response.json();
+  //     if (data.success) {
+  //       setCaptchaVerified(true);  // Mark captcha as verified
+  //       return true;
+  //     } else {
+  //       setCaptchaVerified(false);  // Mark captcha as not verified
+  //       return false;
+  //     }
+  //   } catch (error) {
+  //     console.error("Error verifying reCAPTCHA:", error);
+  //     return false;
+  //   }
+  // };
 
   // Function to send the email
   const sendEmail = async (e) => {
