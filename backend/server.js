@@ -30,7 +30,6 @@ const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.
 
 app.post("/api/check-access", (req, res) => {
   const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log("User IP:", userIP);
 
   const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
   if (whitelistedIPs.includes(userIP)) {

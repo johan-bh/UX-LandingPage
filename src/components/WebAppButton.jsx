@@ -4,8 +4,6 @@ import Modal from "./Modal";    // Import the Modal component
 
 const apiUrl = import.meta.env.VITE_API_URL || "/api";
 
-console.log("API URL:", apiUrl);
-
 const WebAppButton = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
