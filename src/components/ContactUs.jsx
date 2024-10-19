@@ -92,6 +92,9 @@ const ContactUs = () => {
 
   return (
     <Section id="contact">
+    <div className="container lg:flex">
+    <div className="relative max-w-full mx-auto p-0.5 rounded-2xl overflow-hidden">
+    {/* <div className="relative z-1 flex-col items-start h-auto mb-5 p-8 border border-n-1/10 rounded-2xl bg-n-8 overflow-hidden lg:p-20 xl:h-auto"> */}
         <Heading
           title="Skriv dig op til vores betaprogram"/>
         <h2 className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
@@ -160,7 +163,11 @@ const ContactUs = () => {
           </Button>
         </form>
       </div>
+      {/* </div> */}
+      </div>
+      </div>
     </Section>
+    
   );
 };
 

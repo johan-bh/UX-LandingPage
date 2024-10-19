@@ -23,6 +23,9 @@
   }
 }
 
+.bg-n-8\/90 {
+  background-color: rgba(14, 12, 21,  1)!important;
+}
 .rotate-45 {
   @apply rotate-[45deg]
 }

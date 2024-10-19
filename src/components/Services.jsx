@@ -18,7 +18,7 @@ const Services = () => {
           text="Find hurtigt præcis information fra lange journaler, epikriser og lægeattester eller opsummer lange dokumenter ved hjælp af vores AI-drevne værktøj. Spar tid og få bedre indsigt med få klik."
         />
 
-<div className="relative max-w-full mx-auto p-0.5 rounded-2xl bg-conic-gradient overflow-hidden">
+{/* <div className="relative max-w-full mx-auto p-0.5 rounded-2xl bg-conic-gradient overflow-hidden"> */}
   <div className="relative z-1 flex flex-col items-start h-auto mb-5 p-8 border border-n-1/10 rounded-2xl bg-n-8 overflow-hidden lg:p-20 xl:h-auto">
     
     {/* Text and Bullet Points Container */}
@@ -41,7 +41,7 @@ const Services = () => {
     </div>
 
     {/* Image with Rounded Corners */}
-    <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient overflow-hidden">
+
     {/* Outer container with rounded corners */}
     <div className="relative bg-n-8 rounded-2xl overflow-hidden">
       
@@ -50,25 +50,40 @@ const Services = () => {
 
       {/* Make the video take up more width on mobile */}
       <div className="h-auto w-full rounded-b-2xl overflow-hidden">
-        <video
-          className="w-full h-full object-contain" // Ensure video fits the box
-          width={1024}
-          height={600}
-          loop
-          autoPlay="autoplay"
-          playsInline
-          muted
-        >
-          <source src={videoSearch} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
         </div>
-        </div>
+
       </div>
-      </div>
+      
     </div>
+    
+  </div>
+
+<div className="container lg:flex">
+{/* <div className="relative max-w-full mx-auto p-0.5 rounded-2xl bg-conic-gradient overflow-hidden"> */}
+  {/* <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient overflow-hidden"> */}
+    {/* Outer container with rounded corners */}
+    <div className="relative bg-n-8 rounded-2xl overflow-hidden">
+      
+      {/* Header visible only on mobile and hidden on desktop */}
+    <div className="h-[0rem] bg-n-10 rounded-t-2xl md:hidden" />
+      <div className="h-auto w-full rounded-b-2xl overflow-hidden">
+        <video
+                className="w-full h-full object-contain" // Ensure video fits the box
+                width={1024}
+                height={600}
+                loop
+                autoPlay="autoplay"
+                playsInline
+                muted
+              >
+                <source src={videoSearch} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+          </div>
+      </div>
   </div>
 </Section>
+
 );
 };
 

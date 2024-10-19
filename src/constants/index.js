@@ -60,6 +60,12 @@ export const navigation = [
     title: "Kontakt os",
     url: "#contact",
   },
+  {
+    id: "3",
+    title: "Gå til webapp",
+    url: "#webapp",
+    onlyMobile: true,  // Mark this as the webapp button
+  },
   
 ];
 
@@ -123,7 +129,7 @@ export const collabText =
   "Uanset om du bruger WinPLC, Clinea eller noget helt tredje, så kan vores løsning nemt anvendes i parallel og kræver minimal opsætning. Send blot jeres frase og interne forkortelser, så sørger vi for resten. Vi tilbyder desuden et stort frasekartotek, som kan tilpasses jeres klinik.";
 
 export const collabText2 = 
- "Automatisér journalføringen med state-of-the-art talegenkendelse, der transskriberer præcist og hurtigt samt generativ AI baseret på dine kliniks egne fraser og forkotetelser. Vælg mellem post-konsulation diktering eller fuld transkribering af konsultationer (med patientens samtykke). Med denne løsning kan du flytte fokus fra notesblokken til patienten og spare tid på dokumentation.";
+ "Automatisér journalføringen med state-of-the-art talegenkendelse, der transskriberer præcist og hurtigt samt generativ AI baseret på dine kliniks egne fraser og forkortetelser. Vælg mellem post-konsulation diktering eller fuld transkribering af konsultationer (med patientens samtykke). Med denne løsning kan du flytte fokus fra notesblokken til patienten og spare tid på dokumentation.";
 
 export const collabText3 = "Med avanceret sikkerhed sikrer vi, at patientdata håndteres med den højeste standard for beskyttelse og compliance. Vi anvender de sikreste enkrypteringsmetoder, opbevarer alt data i Danmark og gør IKKE brug af hverken cloud eller andre tredjepartsløsninger.";
 

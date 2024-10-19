@@ -25,14 +25,13 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Get the whitelisted IPs from the environment variable and split into an array
-const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
-
 app.post("/api/check-access", (req, res) => {
-  const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  // const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const { ip } = req.body;
+  console.log(`Received IP: ${ip}`);
 
   const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
-  if (whitelistedIPs.includes(userIP)) {
+  if (whitelistedIPs.includes(ip)) {
     return res.json({ hasAccess: true });
   } else {
     return res.json({ hasAccess: false });
