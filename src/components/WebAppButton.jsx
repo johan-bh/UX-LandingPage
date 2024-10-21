@@ -84,11 +84,13 @@ const WebAppButton = () => {
 
       {/* Modal component to display access messages */}
       <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}  // Function to close the modal
-        title="Adgang Nægtet"
-        message={message}  // Message to show in the modal
-      />
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}  // Close modal function
+      title="Adgang Nægtet"
+      message={message}  // The message to display in the modal
+      centered={false}  // Don't center the modal for the webapp button
+    />
+
     </div>
   );
 };
