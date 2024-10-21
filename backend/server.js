@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 app.post("/api/check-access", (req, res) => {
   // const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const { ip } = req.body;
-  console.log(`Received IP: ${ip}`);
+  // console.log(`Received IP: ${ip}`);
 
   const whitelistedIPs = process.env.VITE_WHITELISTED_IPS.split(',').map(ip => ip.trim());
   if (whitelistedIPs.includes(ip)) {
