@@ -256,8 +256,8 @@ export const benefits = [
   },
   {
     id: "1",
-    title: "Find specifik information i journaler, epikriser og attester på få sekunder",
-    text: "Vores AI-løsning gør det muligt at finde specifik information i journaler, epikriser og attester på få sekunder. Spar tid ved hurtigt at få fremhævet de vigtigste data, så du kan fokusere på dine patienter.",
+    title: "Generér attester på få sekunder",
+    text: "Vores AI-løsning gør det muligt at generére attester på få sekunder. Med vores multimodale løsning kan udkastet baseres på lyd, noter, filer eller en kombination af disse.",
     backgroundUrl: "./src/assets/benefits/card-2.svg",
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
@@ -274,7 +274,7 @@ export const benefits = [
   {
     id: "3",
     title: "Løbende forbedringer",
-    text: "Som et hurtigt-bevægende start-up drevet af ingeniører fra Danmarks Tekniske Universitet, lytter vi til vores brugere og implementerer hurtigt deres feedback. Vores agile tilgang sikrer, at vi løbende forbedrer værktøjet, så det altid opfylder klinikkernes behov.",
+    text: "Som et agilt startup drevet af ingeniører fra Danmarks Tekniske Universitet, vil du være med på AI frontlinjen. Hos DokuDok sætter vi en ære i at levere state-of-the-art løsninger samtidig med at gøre AI tilgængelig for alle.",
     backgroundUrl: "./src/assets/benefits/card-4.svg",
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
@@ -283,7 +283,7 @@ export const benefits = [
   {
     id: "4",
     title: "Skræddersyet til din klinik",
-    text: "Vi tilpasser løsningen til din kliniks skabeloner og udtryk, så din journalføring bliver så personlig og effektiv som muligt. Modsat andre systemhuse, er vi fleksible og tilpasser os til dig. Har du forslag til forbedringer, så lytter vi!",
+    text: "Vi tilpasser løsningen til din kliniks skabeloner og udtryk, så din journalføring bliver så personlig og effektiv som muligt. Modsat andre systemhuse, er vi fleksible og tilpasser os dine behov.",
     backgroundUrl: "./src/assets/benefits/card-5.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,

@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
+      className={`fixed top-0 left-0 w-full z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] lg:bg-n-8/90 lg:backdrop-blur-sm ${
         openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
       }`}
     >
@@ -63,7 +63,7 @@ const Header = () => {
                 // For the WebAppButton item, replace <a> with the button functionality
                 return (
                   <div key={item.id} className="block px-6 py-6 md:py-8">
-                    <Button onClick={handleWebAppClick}>
+                    <Button onClick={handleWebAppClick} className="!bg-black hover:!bg-black !text-white font-semibold">
                       Gå til webapp
                     </Button>
                   </div>

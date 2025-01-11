@@ -10,7 +10,7 @@
   --font-sora: "Sora", sans-serif;
   --font-code: "Source Code Pro", monospace;
   --font-grotesk: "Space Grotesk", sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -19,12 +19,18 @@
 
 @layer base {
   body {
-    @apply font-sans bg-n-8 text-n-1 text-base;
+    @apply font-sans bg-white text-black text-base;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 }
 
 .bg-n-8\/90 {
-  background-color: rgba(14, 12, 21,  1)!important;
+  background: none !important;
+  backdrop-filter: none !important;
 }
 .rotate-45 {
   @apply rotate-[45deg]
@@ -96,18 +102,631 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 50% !important;
+  align-items: center;
+  z-index: 50;
 }
 
 .modal {
-  background: white;
-  padding: 50px;
-  border-radius: 10px;
+  background: #FFFFFF;
+  padding: 2rem;
+  border-radius: 1rem;
   max-width: 500px;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bg-stroke-1 {
+  background: none !important;
+  display: none !important;
+}
+
+.nav-link {
+  color: black !important;
+}
+
+.text-n-1 {
+  color: black !important;
+}
+
+.text-n-1\/50 {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.hover\:text-n-1:hover {
+  color: black !important;
+}
+
+.h2 {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+.text-n-2 {
+  color: #000000 !important;
+}
+
+
+.bg-\[\#F7FBFF\] {
+  background-color: #dbebfa !important;
+}
+
+body .relative.z-1.flex.flex-col.items-start.h-auto.mb-5.p-8 {
+  background-color: #dbebfa !important;
+}
+
+/* .bg-\[\#F0F9FF\] {
+  background-color: #dbebfa !important;
+} */
+
+/* Add styles for benefit cards */
+.block.relative.p-8 {
+  background-color: #FFFFFF !important;  /* Pure white background */
+  border: 1px solid #F1F3F5 !important;  /* Very subtle border */
+  border-radius: 1rem !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Subtle hover effect */
+.block.relative.p-8:hover {
+  background-color: #EBF8FF !important; /* Light blue background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Card title (h3) */
+.block.relative.p-8 h3 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Card title (h5) */
+.block.relative.p-8 h5 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+
+
+
+/* Card text */
+.block.relative.p-8 p {
+  color: #6B7280 !important;  /* A lighter gray for better contrast */
+}
+
+/* Update the heading styles for the benefit cards */
+h5.mb-4 {  /* This targets the specific h5 headings in the cards */
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Or alternatively, we can be more specific */
+.block.relative.p-8 > h5 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.mb-5 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+h6 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+p {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* General text styles */
+h6:not([class*="border"]) {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* Preserve circular illustration styles */
+.relative.left-1\/2 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+.relative.left-1\/2 .border,
+.relative.left-1\/2 .border-n-6 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Style for the inner circles */
+.relative.left-1\/2 .w-60 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+.relative.left-1\/2 .w-[6rem] {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Override card text styles */
+.block.relative.p-8 p {
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+}
+
+/* Update dark cards to lighter color */
+.bg-n-8 {
+  background-color: #F3F4F6 !important; /* Light gray background */
+}
+
+/* Ensure text is visible on the lighter background */
+.bg-n-8 h3,
+.bg-n-8 h4,
+.bg-n-8 h5 {
+  color: #000000 !important; /* Black text for headings */
+}
+
+.bg-n-8 p {
+  color: #4B5563 !important; /* Darker gray for better readability */
+}
+
+/* Keep the hover state subtle */
+.bg-n-8:hover {
+  background-color: #E5E7EB !important;
+}
+
+/* Clean up benefit card backgrounds */
+.block.relative.p-0\.5 {
+  background: none !important;
+}
+
+.absolute.inset-0\.5 {
+  background-color: #F3F4F6 !important;
+}
+
+/* Also update any h5 titles in the benefit cards */
+.block.relative.p-8 h5,
+h5.mb-5 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Clean navbar styles */
+.fixed.top-0.left-0.w-full.z-50 {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  width: 100vw !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+/* Container styles */
+.fixed.top-0.left-0.w-full.z-50 .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 4rem !important;
+  margin: 0 auto !important;
+}
+
+/* Nav link styles */
+.nav-link {
+  color: black !important;
+  font-size: 1.25rem !important;
+  margin-left: 3.5rem !important;
+  font-weight: 500 !important;
+}
+
+
+/* Remove any transforms from navbar children */
+.fixed.top-0.left-0.w-full.z-50 * {
+  transform: none !important;
+}
+
+/* Remove any width constraints */
+.flex.items-center.px-5 {
+  width: 100% !important;
+  padding: 0 4rem !important;
+}
+
+/* Ensure hero section doesn't constrain width */
+#hero {
+  width: 100% !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* Remove the container padding and width constraints */
+.fixed.top-0.left-0.w-full.z-50 .container,
+.fixed.top-0.left-0.w-full.z-50 .px-5 {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Ensure the flex container inside navbar spans full width */
+.flex.items-center {
+  width: 100% !important;
+  justify-content: flex-end !important;
+  gap: 1rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Logo container adjustment */
+.flex.items-center > :first-child {
+  margin-right: auto !important;
+}
+
+/* Remove crosses */
+[class*="pointer-events-none"] svg,
+.absolute.pointer-events-none {
+  display: none !important;
+}
+
+/* Reset all navbar link colors */
+.lg\:text-n-1\/50,
+.lg\:text-n-1,
+.text-n-1\/50,
+.text-n-1,
+.nav-link {
+  color: #000000 !important;
+}
+
+/* Remove any backdrop filters */
+.backdrop-blur-sm,
+.lg\:backdrop-blur-sm {
+  backdrop-filter: none !important;
+}
+
+/* Remove any background colors */
+.bg-n-8,
+.lg\:bg-n-8\/90,
+.bg-n-8\/90 {
+  background: none !important;
+}
+
+/* Navigation specific styles */
+.fixed.top-0.left-0.w-full.z-50 nav a,
+.fixed.top-0.left-0.w-full.z-50 .nav-link,
+.lg\:text-n-1,
+.text-n-1 {
+  color: #000000 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  margin-left: 0 !important;
+}
+
+/* Navigation container */
+.fixed.top-0.left-0.w-full.z-50 nav .flex-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  gap: 3rem !important;
+  margin-right: 2rem !important;
+}
+
+/* Logo styles */
+.fixed.top-0.left-0.w-full.z-50 .w-[12rem] {
+  margin-right: auto !important;
+}
+
+/* Navigation links container */
+.fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  padding-right: 2rem !important;
+}
+
+/* Individual navigation links */
+.fixed.top-0.left-0.w-full.z-50 nav a {
+  font-size: 1rem !important;
+  margin-left: 2rem !important;
+  white-space: nowrap !important;
+}
+
+/* Ensure flex container spans full width */
+.flex.items-center {
+  width: 100% !important;
+  justify-content: space-between !important;
+}
+
+/* Navigation container and links */
+.relative.z-2.flex.flex-col.items-center.justify-center.m-auto.lg\:flex-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  gap: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Logo container */
+.block.w-\[12rem\].xl\:mr-8 {
+  margin-right: auto !important;
+}
+
+/* Individual nav links */
+.block.relative.font-code.text-2xl.uppercase {
+  font-size: 1rem !important;
+  white-space: nowrap !important;
+}
+
+/* Navigation styles */
+nav .relative.z-2 {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  padding-right: 3rem !important;
+}
+
+nav .relative.z-2 a {
+  margin-left: 2.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Logo */
+.w-\[12rem\] {
+  margin-right: auto !important;
+}
+
+/* Navigation link hover styles */
+.fixed.top-0.left-0.w-full.z-50 nav a:hover,
+.lg\:hover\:text-n-1:hover {
+  background: none !important;
+  color: #000000 !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+/* Remove hover background */
+.hover\:text-color-1:hover {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Remove hover effects for navbar links */
+.fixed.top-0.left-0.w-full.z-50 nav a:hover,
+.nav-link:hover {
+  background: none !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* If hover styles are inherited from another class */
+.fixed.top-0.left-0.w-full.z-50 *:hover {
+  background: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.circle-container {
+  position: relative;
+  width: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border-radius: 50%; /* Makes it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+}
+
+.transform-origin-center {
+  transform-origin: center;
+}
+
+/* Burger menu specific styles */
+.fixed.top-0.left-0.w-full.z-50 button svg rect {
+  fill: #000000 !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover svg rect {
+  fill: #000000 !important;
+}
+
+/* Override any inherited hover styles for the burger menu */
+.fixed.top-0.left-0.w-full.z-50 button {
+  background: none !important;
+  opacity: 1 !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+  opacity: 1 !important;
+}
+
+/* Menu icon specific styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon rect {
+  fill: #000000 !important;
+}
+
+/* Remove all hover effects for the menu button */
+.fixed.top-0.left-0.w-full.z-50 button {
+  background: transparent !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: transparent !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover * {
+  background: transparent !important;
+  fill: #000000 !important;
+  color: #000000 !important;
+}
+
+/* Menu icon styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon div {
+  background-color: #000 !important;
+  transform-origin: center !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover .menu-icon div {
+  background-color: #000 !important;
+}
+
+/* Remove any hover effects that might interfere */
+.fixed.top-0.left-0.w-full.z-50 button,
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+}
+
+/* 
+button {
+  border: 2px solid red;
+}
+
+svg {
+  border: 2px solid blue;
+}
+ */
+
+/* Clean menu styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon div {
+  background-color: #000 !important;
+  transform-origin: center !important;
+}
+
+/* Remove hover effects but keep transforms */
+.fixed.top-0.left-0.w-full.z-50 button,
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover .menu-icon div {
+  background-color: #000 !important;
+}
+
+/* Mobile navigation spacing */
+@media (max-width: 1024px) {
+  /* Mobile nav container */
+  .fixed.inset-0.top-\[5rem\] {
+    top: 0 !important;
+    background-color: white !important;
+    z-index: 100 !important;
+  }
+
+  /* Container for nav links */
+  .relative.flex.flex-col.items-center.justify-start {
+    padding-top: 5rem !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Individual nav links with staggered animation */
+  .block.w-full.text-center {
+    padding: 0.35rem 0 !important;
+    margin: 0 !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    opacity: 0;
+    animation: slideIn 0.4s ease forwards;
+  }
+
+  /* Staggered delays for each nav item */
+  .block.w-full.text-center:nth-child(1) { animation-delay: 200ms; }
+  .block.w-full.text-center:nth-child(2) { animation-delay: 400ms; }
+  .block.w-full.text-center:nth-child(3) { animation-delay: 600ms; }
+  .block.w-full.text-center:nth-child(4) { animation-delay: 800ms; }
+  .block.w-full.text-center:nth-child(5) { animation-delay: 1000ms; }
+
+  /* Button in mobile nav */
+  .block.w-full.text-center.px-4.py-2 {
+    padding: 0.35rem 0 !important;
+  }
+
+  /* Remove any extra margins from nav items */
+  nav a, nav div {
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Adjust the container holding the links */
+  .relative.flex.flex-col.items-center.justify-start.pt-16 {
+    padding-top: 0.5rem !important; /* Reduce the top padding */
+    gap: 0.25rem !important; /* Reduce the gap between flex items */
+  }
+
+  /* Adjust individual navbar links */
+  .block.w-full.text-center {
+    padding: 0.25rem 0 !important; /* Reduce vertical padding */
+    margin: 0 !important; /* Remove unnecessary margins */
+    font-size: 1.125rem !important; /* Adjust font size if needed */
+    line-height: 1.25 !important; /* Tighten line height */
+  }
+
+  /* Adjust the parent container for a tighter layout */
+  .fixed.inset-0.top-\[5rem\] {
+    top: 4rem !important; /* Adjust the top position of the nav */
+  }
+
+  /* Remove padding from the parent nav container */
+  nav a, nav div {
+    margin: 0 !important;
+    padding: 0.15rem 0 !important;
+  }
+}
+.mobile-nav {
+  padding-top: 1rem !important; /* Reduce top padding */
+  gap: 0.5rem !important; /* Reduce spacing between links */
+}
+
+.mobile-nav-link {
+  padding: 0.25rem 0 !important; /* Reduce vertical padding */
+  margin: 0 !important; /* Remove unnecessary margins */
+  font-size: 1rem !important; /* Adjust font size for compact design */
+  line-height: 1.25 !important; /* Compact line height */
+}
+
+/* Animation for mobile nav links */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add hover effect to contact form container */
+.bg-white.hover\:bg-\[\#f8f9fa\],
+.relative.z-1.flex.flex-col.items-start.h-auto.mb-5.p-8.bg-white {
+  transition: all 0.3s ease !important;
+}
+
+.bg-white.hover\:bg-\[\#f8f9fa\]:hover,
+.relative.z-1.flex.flex-col.items-start.h-auto.mb-5.p-8.bg-white:hover {
+  background-color: #EBF8FF !important; /* Light blue */
 }

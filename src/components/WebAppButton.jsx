@@ -76,17 +76,17 @@ const WebAppButton = () => {
       <Button
         className="hidden lg:flex"
         onClick={handleCheckAccess}
-        white={false}
         px="px-7"
+        black
       >
-        {loading ? "Viderestiller" : "Gå til webapp"}
+        {loading ? "Validerer adgang..." : "Gå til webapp"}
       </Button>
 
       {/* Modal component to display access messages */}
       <Modal
       isOpen={isModalOpen}
       onClose={() => setIsModalOpen(false)}  // Close modal function
-      title="Adgang Nægtet"
+      title="Adgang Nægtet. Du har desværre ikke adgang til webappen. Kontakt os for at få adgang."
       message={message}  // The message to display in the modal
       centered={false}  // Don't center the modal for the webapp button
     />

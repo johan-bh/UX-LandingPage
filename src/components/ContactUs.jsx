@@ -39,7 +39,7 @@ const ContactUs = () => {
         (result) => {
           console.log("Email sent successfully:", result.text);
           setMessage(
-            "Tak for din besked! Du vil modtage en kvittering og vi vender tilbage hurtigst muligt 🤗"
+            "Tak for din besked! Du vil modtage en kvittering og vi vender tilbage hurtigst muligt🤗"
           );
           setIsModalOpen(true);  // Show success modal
         },
@@ -55,14 +55,14 @@ const ContactUs = () => {
 
   return (
     <Section id="contact">
-      <div className="container lg:flex">
-        <div className="relative max-w-full mx-auto p-0.5 rounded-2xl overflow-hidden">
+      <div className="container lg:flex bg-white">
+        <div className="relative max-w-full mx-auto p-0.5 rounded-2xl overflow-hidden bg-white">
           <Heading title="Skriv dig op til vores betaprogram" />
           <h2 className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
             Er du interesseret i at deltage i vores betaprogram? Så send os en
             besked med formularen nedenfor, så kontakter vi jer hurtigst muligt.
           </h2>
-          <div className="flex justify-center items-center p-8 max-w-2xl mx-auto bg-n-8 border border-n-6 rounded-2xl">
+          <div className="flex justify-center items-center p-8 max-w-2xl mx-auto bg-[#F0F9FF] hover:bg-[#E1F3FF] transition-all duration-200 rounded-2xl border border-n-1/10 hover:border-n-1/30 hover:shadow-lg">
             <form className="w-full" onSubmit={sendEmail}>
               <h4 className="h4 mb-4 text-center">Kontakt os</h4>
 
@@ -74,8 +74,8 @@ const ContactUs = () => {
                 <input
                   type="text"
                   id="name"
-                  name="from_name"  // Ensure this matches your EmailJS template
-                  className="w-full p-3 border border-n-6 rounded-lg bg-n-10 text-n-1"
+                  name="from_name"
+                  className="w-full p-3 border border-n-6 rounded-lg bg-white text-black placeholder-black"
                   placeholder="Dit Navn"
                   required
                   onChange={handleChange}
@@ -84,17 +84,14 @@ const ContactUs = () => {
 
               {/* Email Field */}
               <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-n-1/50 body-2"
-                >
+                <label htmlFor="email" className="block mb-2 text-n-1/50 body-2">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
-                  name="from_email"  // Match this with your EmailJS template
-                  className="w-full p-3 border border-n-6 rounded-lg bg-n-10 text-n-1"
+                  name="from_email"
+                  className="w-full p-3 border border-n-6 rounded-lg bg-white text-black placeholder-black"
                   placeholder="Din Email"
                   required
                   onChange={handleChange}
@@ -103,17 +100,14 @@ const ContactUs = () => {
 
               {/* Message Field */}
               <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block mb-2 text-n-1/50 body-2"
-                >
+                <label htmlFor="message" className="block mb-2 text-n-1/50 body-2">
                   Besked
                 </label>
                 <textarea
                   id="message"
-                  name="message"  // Ensure this matches your EmailJS template
+                  name="message"
                   rows="5"
-                  className="w-full p-3 border border-n-6 rounded-lg bg-n-10 text-n-1"
+                  className="w-full p-3 border border-n-6 rounded-lg bg-white text-black placeholder-black"
                   placeholder="Din Besked"
                   required
                   onChange={handleChange}
@@ -121,7 +115,7 @@ const ContactUs = () => {
               </div>
 
               {/* Submit Button */}
-              <Button className="w-full" type="submit" white>
+              <Button className="w-full !bg-black hover:!bg-black !text-white font-semibold" type="submit">
                 Send Besked
               </Button>
             </form>

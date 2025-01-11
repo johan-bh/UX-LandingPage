@@ -1,4 +1,5 @@
-import dokuLogo from "./dokudok-logo.svg";
+import dokuLogo from "./DokuDok-sort-logo.png";
+import dokuLogoWhite from "./DokuDok-hvidt-logo.png";  
 import check from "./check.svg";
 import play from "./play.svg";
 import gradient from "./gradient.png";
@@ -68,6 +69,7 @@ import twitter from "./socials/twitter.svg";
 
 export {
   dokuLogo,
+  dokuLogoWhite,
   check,
   check2,
   loading1,

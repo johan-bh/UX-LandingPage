@@ -34,8 +34,8 @@ const Hero = () => {
           <h2 className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
             Et AI-drevet værktøj til læger, der automatiserer journalføring og informationssøgning - strømlin workflowet i din klinik. Tilmeld dig vores betaprogram og vær blandt de første til at prøve vores løsning.
           </h2>
-          <Button href="#contact" white>
-            Tilmed dig nu
+          <Button href="#contact" className="!bg-black hover:!bg-black !text-white font-semibold">
+            Tilmeld dig nu
           </Button>
         </div>
         

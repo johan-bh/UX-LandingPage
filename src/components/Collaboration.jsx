@@ -29,7 +29,7 @@ const Collaboration = () => {
             ))}
           </ul>
 
-          <Button href="#contact">Skriv dig op nu!</Button>
+          <Button href="#contact" className="!bg-black hover:!bg-black !text-white font-semibold">Skriv dig op nu!</Button>
         </div>
 
         <div className="lg:ml-auto xl:w-[38rem] mt-4">
@@ -37,21 +37,18 @@ const Collaboration = () => {
             {/* {collabText} */}
           </p>
 
-          <div className="relative left-1/2 flex w-[20rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale:75 md:scale-100">
-            <div className="flex w-60 aspect-square m-auto border border-n-6 rounded-full">
-              <div className="w-[6rem] aspect-square m-auto p-[0.2rem] bg-conic-gradient rounded-full">
-                <div className="flex items-center justify-center w-full h-full bg-n-8 rounded-full">
-                  <img
-                    src={dokuLogo}
-                    width={80}
-                    height={80}
-                    alt="brainwave"
-                  />
-                </div>
-              </div>
+          <div className="relative left-1/2 flex w-[20rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100">
+            {/* Logo container - centered vertically, right side */}
+            <div className="absolute right-[-74px] top-1/2 -translate-y-1/2 flex items-center justify-center z-10">
+              <img
+                src={dokuLogo}
+                className="w-[60%] h-[60%] object-contain"
+                alt="brainwave"
+              />
             </div>
 
-            <ul>
+            {/* App icons circle */}
+            <ul className="absolute inset-0">
               {collabApps.map((app, index) => (
                 <li
                   key={app.id}
