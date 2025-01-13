@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 import { dokuLogo } from "../assets";
@@ -9,8 +9,10 @@ import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 import WebAppButton from './WebAppButton';
 import Section from "./Section";
+
 const Header = () => {
   const pathname = useLocation();
+  const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
 
   const toggleNavigation = () => {
@@ -30,70 +32,113 @@ const Header = () => {
     setOpenNavigation(false);
   };
 
+  const handleWebAppClick = () => {
+    window.location.href = "https://app.dokudok.dk";
+  };
+
+  const handleNavClick = async (e, url) => {
+    e.preventDefault();
+    
+    // If it's a route-based link (FAQs, About, Signup), navigate to the page and scroll to top
+    if (url === '/faqs' || url === '/about' || url === '/signup' || url === '/how-it-works') {
+      navigate(url);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      handleClick(); // Close mobile menu if open
+      return;
+    }
+    
+    // For scroll links, first ensure we're on home page
+    if (window.location.pathname !== '/') {
+      await navigate('/');
+      // Small delay to ensure DOM is updated
+      setTimeout(() => {
+        const sectionId = url.replace('#', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      const sectionId = url.replace('#', '');
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+    
+    handleClick(); // Close mobile menu if open
+  };
+
+  const handleLogoClick = async (e) => {
+    e.preventDefault();
+    if (window.location.pathname !== '/') {
+      await navigate('/');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    handleClick(); // Close mobile menu if open
+  };
+
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] lg:bg-n-8/90 lg:backdrop-blur-sm ${
-        openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
+      className={`fixed top-0 left-0 w-full z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] ${
+        openNavigation ? "bg-black" : "bg-white lg:bg-transparent"
       }`}
     >
-    <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-      <a
-        className="block w-[12rem] xl:mr-8"
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();  // Prevent the default behavior of the anchor tag
-          window.history.pushState({}, '', '/');  // Clear any routes and go to the root URL
-          document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });  // Smooth scroll to #hero section
-        }}
-      >
-        <img src={dokuLogo} width={190} height={40} alt="Brainwave" />
-      </a>
-
-
-
+      <div className="flex items-center px-8 lg:px-7.5 xl:px-10 max-lg:py-4">
+        <a 
+          href="/"
+          onClick={handleLogoClick}
+          className="block w-[8.5rem] xl:mr-8"
+        >
+          <img src={dokuLogo} width={140} height={40} alt="DokuDok" />
+        </a>
 
         <nav
           className={`${
             openNavigation ? "flex" : "hidden"
-          } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+          } fixed top-0 left-0 right-0 bottom-0 bg-black lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
-          <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
-          {navigation.map((item) => {
+          <div className="relative z-2 flex flex-col items-center justify-start w-full pt-20 lg:flex-row lg:pt-0">
+            {navigation.map((item) => {
               if (item.id === "4") {
-                // For the WebAppButton item, replace <a> with the button functionality
-                return (
-                  <div key={item.id} className="block px-6 py-6 md:py-8">
-                    <Button onClick={handleWebAppClick} className="!bg-black hover:!bg-black !text-white font-semibold">
-                      Gå til webapp
-                    </Button>
-                  </div>
-                );
+                return null;
               }
-
-              // Render regular navigation links
               return (
                 <a
                   key={item.id}
                   href={item.url}
-                  onClick={handleClick}
-                  className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
+                  onClick={(e) => handleNavClick(e, item.url)}
+                  className={`block relative font-code text-2xl uppercase ${
+                    openNavigation ? "text-white" : item.highlight ? "text-[#1E9AFC] font-bold" : "text-black/50"
+                  } ${
                     item.onlyMobile ? "lg:hidden" : ""
-                  } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
+                  } px-6 py-4 md:py-6 lg:text-xs lg:font-semibold ${
                     item.url === pathname.hash
-                      ? "z-2 lg:text-n-1"
-                      : "lg:text-n-1/50"
-                  } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+                      ? "text-black"
+                      : ""
+                  } lg:leading-5 xl:px-12 hover:no-underline hover:opacity-70 transition-opacity`}
                 >
                   {item.title}
                 </a>
               );
             })}
           </div>
-
-          <HamburgerMenu />
         </nav>
-
-        <WebAppButton /> 
 
         {/* Button for mobile menu toggle */}
         <Button
@@ -103,6 +148,13 @@ const Header = () => {
         >
           <MenuSvg openNavigation={openNavigation} />
         </Button>
+
+        {/* WebApp Button - now outside navigation */}
+        <div className="hidden lg:block">
+          <Button onClick={handleWebAppClick} className="bg-black hover:bg-black text-white font-semibold">
+            Gå til webapp
+          </Button>
+        </div>
       </div>
     </div>
   );

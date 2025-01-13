@@ -66,6 +66,8 @@ import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
+import linkedin from "./socials/linkedin.svg";
+import skylab from "./socials/DTU-skylab-logo.png";
 
 export {
   dokuLogo,
@@ -130,4 +132,6 @@ export {
   instagram,
   telegram,
   twitter,
+  linkedin,
+  skylab
 };

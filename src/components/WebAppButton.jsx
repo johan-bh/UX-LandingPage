@@ -5,7 +5,7 @@ import Section from "./Section";  // Assuming Section is used for layout
 
 const apiUrl = import.meta.env.VITE_API_URL || "/api";
 
-const WebAppButton = () => {
+const WebAppButton = ({ black }) => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);  // State for modal visibility
@@ -74,23 +74,21 @@ const WebAppButton = () => {
   return (
     <div>
       <Button
-        className="hidden lg:flex"
+        className={`hidden lg:flex bg-black hover:bg-black text-white font-semibold`}
         onClick={handleCheckAccess}
         px="px-7"
-        black
       >
         {loading ? "Validerer adgang..." : "Gå til webapp"}
       </Button>
 
       {/* Modal component to display access messages */}
       <Modal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}  // Close modal function
-      title="Adgang Nægtet. Du har desværre ikke adgang til webappen. Kontakt os for at få adgang."
-      message={message}  // The message to display in the modal
-      centered={false}  // Don't center the modal for the webapp button
-    />
-
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}  // Close modal function
+        title="Adgang Nægtet"
+        message={message}  // The message to display in the modal
+        centered={false}  // Don't center the modal for the webapp button
+      />
     </div>
   );
 };

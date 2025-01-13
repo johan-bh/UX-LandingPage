@@ -47,26 +47,36 @@ import {
 export const navigation = [
   {
     id: "0",
-    title: "Funktionaliteter",
-    url: "#features",
+    title: "Hjem",
+    url: "#hero",
   },
   {
     id: "1",
-    title: "Hvordan det virker",
-    url: "#how-to-use",
+    title: "Funktionaliteter",
+    url: "/how-it-works",
   },
   {
     id: "2",
-    title: "Kontakt os",
-    url: "#contact",
+    title: "Om os",
+    url: "/about",
   },
   {
     id: "3",
-    title: "Gå til webapp",
-    url: "#webapp",
-    onlyMobile: true,  // Mark this as the webapp button
+    title: "FAQ",
+    url: "/faqs",
   },
-  
+  {
+    id: "4",
+    title: "Gå til webapp",
+    url: "https://app.dokudok.dk",
+    onlyMobile: true,
+  },
+  {
+    id: "5",
+    title: "Tilmeld",
+    url: "/signup",
+    highlight: true
+  }
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
@@ -135,20 +145,53 @@ export const collabText3 = "Med avanceret sikkerhed sikrer vi, at patientdata h�
 
 export const collabContent = [
   {
-    id: "0",
-    title: "Nem og hurtig integration",
-    text: collabText,
-  },
-  {
     id: "1",
-    title: "Effektiv Automatisering",
-    text: collabText2,
+    title: "Journalisering med AI-assisteret transskribering",
+    text: "Vælg mellem diktering eller konsultationsmode og få dine optagelser journaliseret i realtid. Tilføj kontekst og noter direkte i journalen. Vores avancerede frasevælger med multiselect og logiske operatorer gør det nemt at registrere biomarkører, medikamenter og andre objektive metrikker.",
+    features: [
+      "Realtids-transskribering med høj præcision",
+      "Valgfri diktering eller konsultationsmode",
+      "Intelligent notetilføjelse og konteksthåndtering",
+      "Avanceret frasevælger med multiselect",
+      "Effektiv registrering af biomarkører og medikamenter"
+    ]
   },
   {
     id: "2",
-    title: "State-of-the-art IT-sikkerhed",
-    text: collabText3
+    title: "Attest Hjælperen - Intelligent attestgenerering",
+    text: "Generér udkast til et bredt udvalg af standardattester, herunder LÆ-helbredsattester. Vores multimodale attesthjælper kan skabe attester baseret på noter, lyd, filupload eller en kombination - du vælger rækkefølgen og metoden.",
+    features: [
+      "Omfattende udvalg af standardattester",
+      "Multimodal input-håndtering",
+      "Fleksibel rækkefølge i attestgenerering",
+      "Intelligent sammenfletning af forskellige datakilder",
+      "Brugervenlig redigering af genererede attester"
+    ]
   },
+  {
+    id: "3",
+    title: "GDPR-Compliant Medicinsk Chatbot",
+    text: "Få adgang til en sikker, GDPR-compliant medicinsk chatbot, der hjælper med dokumentation og informationssøgning. Altid opdateret med de nyeste vejledninger fra Sundhedsstyrelsen om anbefalinger, forløbsprocedurer og behandlingsplaner.",
+    features: [
+      "Opdateret med nyeste sundhedsfaglige vejledninger",
+      "Sikker og GDPR-compliant databehandling",
+      "Intelligent informationssøgning",
+      "Hurtig adgang til behandlingsplaner",
+      "Automatisk opdatering af retningslinjer"
+    ]
+  },
+  {
+    id: "4",
+    title: "Personalisering og Smarte Fraser",
+    text: "Tilpas platformen til dine behov med personlige instrukser til vores generative AI. Udnyt vores omfattende frasekartotek og skab 'Smarte Fraser' med logiske operatorer, multiselect-knapper og sliders for effektiv journalføring.",
+    features: [
+      "Personlige AI-instrukser",
+      "Omfattende frasekartotek",
+      "Smarte Fraser med logiske operatorer",
+      "Multiselect og slider-funktionalitet",
+      "Tilpasset journalskrivning"
+    ]
+  }
 ];
 
 export const collabApps = [
@@ -257,7 +300,7 @@ export const benefits = [
   {
     id: "1",
     title: "Generér attester på få sekunder",
-    text: "Vores AI-løsning gør det muligt at generére attester på få sekunder. Med vores multimodale løsning kan udkastet baseres på lyd, noter, filer eller en kombination af disse.",
+    text: "Vores AI-løsning gør det muligt at generére attestudkast på få sekunder. Med vores multimodale løsning kan udkastet baseres på lyd, noter, filer eller en kombination heraf.",
     backgroundUrl: "./src/assets/benefits/card-2.svg",
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
@@ -265,8 +308,8 @@ export const benefits = [
   },
   {
     id: "2",
-    title: "Høj sikkerhed og GDPR",
-    text: "Vi prioriterer patientsikkerhed og overholder de højeste sikkerhedsstandarder, så du kan stole på, at data håndteres korrekt. Vi opererer 100% i Danmark, opbevarer intet i skyen og gør IKKE brug af trejdepartsløsninger.",
+    title: "Medicinsk Ekspert-Chatbot",
+    text: "Få adgang til en GDPR-compliant chatbot, der er specialiseret i dansk medicin. Den opdateres løbende med de nyeste retningslinjer og best practices, så du altid har adgang til pålidelig og aktuel medicinsk information.",
     backgroundUrl: "./src/assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,

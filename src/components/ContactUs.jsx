@@ -57,12 +57,11 @@ const ContactUs = () => {
     <Section id="contact">
       <div className="container lg:flex bg-white">
         <div className="relative max-w-full mx-auto p-0.5 rounded-2xl overflow-hidden bg-white">
-          <Heading title="Skriv dig op til vores betaprogram" />
+          <Heading title="Kontakt os" />
           <h2 className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Er du interesseret i at deltage i vores betaprogram? Så send os en
-            besked med formularen nedenfor, så kontakter vi jer hurtigst muligt.
+          Har du spørgsmål, ønsker du at høre mere om vores løsninger, eller vil du samarbejde med os? Send os en besked via formularen nedenfor, så vender vi tilbage hurtigst muligt.
           </h2>
-          <div className="flex justify-center items-center p-8 max-w-2xl mx-auto bg-[#F0F9FF] hover:bg-[#E1F3FF] transition-all duration-200 rounded-2xl border border-n-1/10 hover:border-n-1/30 hover:shadow-lg">
+          <div className="flex justify-center items-center p-8 max-w-2xl mx-auto bg-white hover:bg-[#f8f9fa] transition-all duration-200 rounded-2xl border border-[#e5e7eb] hover:border-[#e5e7eb] hover:shadow-lg">
             <form className="w-full" onSubmit={sendEmail}>
               <h4 className="h4 mb-4 text-center">Kontakt os</h4>
 
