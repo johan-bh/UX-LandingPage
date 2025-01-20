@@ -97,17 +97,11 @@
 }
 
 .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
+  inset: 0;
 }
+
 
 .modal {
   background: #FFFFFF;
@@ -387,7 +381,7 @@ h5.mb-5 {
 
 .flex.items-center {
   width: 100% !important;
-  justify-content: none !important;
+  /* justify-content: none !important; */
 }
 
 /* Logo container adjustment */
@@ -470,7 +464,7 @@ h5.mb-5 {
 /* Ensure flex container spans full width */
 .flex.items-center {
   width: 100% !important;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
 }
 
 /* Navigation container and links */
@@ -892,5 +886,77 @@ a[class*="button"],
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* 
+p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: white !important;
+  font-weight: 500 !important;
+} */
+
+.modal-text {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-box {
+  background-color: black !important;
+  border-radius: 0.75rem !important;
+}
+
+.modal-box h2,
+.modal-box p,
+.modal-box button {
+  color: white !important;
+}
+
+/* Specific style for modal paragraph */
+.modal-box p.mb-6 {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 0.75rem !important;
+}
+
+/* Specific style for modal message */
+.modal-message {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  padding-right: 15rem !important; /* Default for small screens */
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .text-black {
+    padding-right: 20rem !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .text-black {
+    padding-right: 30rem !important;
   }
 }

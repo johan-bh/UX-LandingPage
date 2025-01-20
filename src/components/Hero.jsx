@@ -1,33 +1,32 @@
-import { curve, robot, generatingJournal } from "../assets";
+// import { curve } from "../assets";
 import Button from "./Button";
 import Section from "./Section";
 import { ScrollParallax } from "react-just-parallax";
 import { useRef } from "react";
-import Generating from "./Generating";
-import frontpageDokuapp from "../assets/hero/frontpage_dokuapp.png";
 import { useNavigate } from "react-router-dom";
+import sleepingPerson from "../assets/hero/sleeping-person.png";
 
 const stats = [
   {
     id: 1,
-    icon: "💡",
-    number: "40%",
-    text: "Tidsbesparelse på dokumentationsopgaver",
-    description: "Frigør mere tid til dine patienter"
+    icon: "🌙",
+    number: "85%",
+    text: "Sleep Quality",
+    description: "Users report improved sleep and better waking within 2 weeks"
   },
   {
     id: 2,
-    icon: "✅",
-    number: "10+",
-    text: "Klinikker i Danmark",
-    description: "Bruger allerede DokuDok aktivt"
+    icon: "⏰",
+    number: "30%",
+    text: "Sleep Onset",
+    description: "Fall asleep naturally and easily every night"
   },
   {
     id: 3,
-    icon: "🔒",
+    icon: "📊",
     number: "100%",
-    text: "GDPR-compliant",
-    description: "Al data forbliver i EU"
+    text: "Personalized",
+    description: "Tailored to your unique sleep patterns"
   }
 ];
 
@@ -51,22 +50,26 @@ const Hero = () => {
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">
-            Vi tager os af papirarbejdet – du tager dig af patienterne
+            Sleep Smarter, Live Better
           </h1>
           <h2 className="body-1 max-w-3xl mx-auto mb-8 text-n-2">
-            Med <span className="text-blue-500">DokuDok</span> får du fremtidens <span className="text-blue-500">AI</span>-værktøj til din klinik
+            Unlock the perfect night's rest with a personalized, <span className="text-blue-500">adaptive sleep system</span> powered by cutting-edge technology
           </h2>
-
           <p className="body-2 max-w-2xl mx-auto mb-10 text-n-2">
-            Et intelligent værktøj der automatiserer journalføring, attestskrivning og informationssøgning – strømlin dokumentationsbyrden og få en enklere hverdag.
+            Real-time insights. Personalized schedules. Wake up at your best.
           </p>
 
-          <div className="flex justify-center w-full">
+          <div className="flex justify-center gap-4 w-full">
             <Button 
               onClick={handleSignupClick} 
-              className="!bg-black hover:!bg-black !text-white font-semibold mb-20 mx-auto"
+              className="!bg-black hover:!bg-black !text-white font-semibold mb-20"
             >
-              Gratis prøveperiode
+              Get Started Now
+            </Button>
+            <Button 
+              className="!bg-white !text-black hover:!bg-gray-100 font-semibold mb-20"
+            >
+              Learn How It Works
             </Button>
           </div>
 
@@ -74,8 +77,8 @@ const Hero = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12 mb-24 pb-8">
             <div className="lg:w-[75%] xl:w-[80%]">
               <img 
-                src={frontpageDokuapp} 
-                alt="DokuDok Platform" 
+                src={sleepingPerson} 
+                alt="Peaceful Sleep Experience" 
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
             </div>
@@ -83,27 +86,27 @@ const Hero = () => {
             {/* Info Boxes */}
             <div className="lg:w-[30%] xl:w-[25%] flex flex-col gap-8 justify-center text-left">
               <div className="flex flex-col">
-                <h4 className="font-semibold mb-2 text-lg">Nem og intuitiv navigation</h4>
-                <p className="text-n-4 text-sm">Vores platform gør det let for dig at fokusere på det vigtige – dine patienter.</p>
+                <h4 className="font-semibold mb-2 text-lg">Personalized Sleep Optimization</h4>
+                <p className="text-n-4 text-sm">Tailored sleep schedules based on your unique physiology and habits.</p>
               </div>
               <div className="flex flex-col">
-                <h4 className="font-semibold mb-2 text-lg">Skræddersyet til din klinik</h4>
-                <p className="text-n-4 text-sm">Brug dine egne fraser og skabeloner for en personlig og effektiv løsning.</p>
+                <h4 className="font-semibold mb-2 text-lg">Real-Time Sleep Monitoring</h4>
+                <p className="text-n-4 text-sm">Analyze sleep stages, stress levels, and disturbances with precision.</p>
               </div>
               <div className="flex flex-col">
-                <h4 className="font-semibold mb-2 text-lg">Alt samlet ét sted</h4>
-                <p className="text-n-4 text-sm">Generér journaler, attester og opsummeringer med et enkelt klik.</p>
+                <h4 className="font-semibold mb-2 text-lg">Smart Alarm System</h4>
+                <p className="text-n-4 text-sm">Wake up feeling refreshed with AI-powered, by regulating ambient light, audio, and temperature.</p>
               </div>
             </div>
           </div>
 
           {/* Bridge Section */}
           <div className="max-w-3xl mx-auto mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-[#1E9AFC] to-[#1A75FF] bg-clip-text text-transparent">
-              Fra platform til resultater
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-[#6B4DE6] to-[#9747FF] bg-clip-text text-transparent">
+              Transform Your Sleep Experience
             </h3>
             <p className="text-n-4 text-lg leading-relaxed">
-              DokuDok gør journalføring og dokumentation nemt og effektivt. Vores intuitive platform hjælper klinikker med at spare tid, reducere arbejdsbyrden og fokusere på det, der betyder mest – patienterne. Her er nogle af fordelene, vores kunder allerede oplever.
+              Our emotion-aware sleep assistant uses advanced AI to understand your sleep patterns and optimize your rest. Experience the future of sleep technology and wake up feeling truly refreshed.
             </p>
           </div>
 
@@ -118,7 +121,9 @@ const Hero = () => {
                 <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-[#1E9AFC] to-[#1A75FF] bg-clip-text text-transparent">
                   {stat.number}
                 </div>
-                <div className="text-lg font-semibold mb-2">{stat.text}</div>
+                <div className="text-lg font-semibold mb-2">
+                  {stat.text}
+                </div>
                 <div className="text-n-4 text-sm">{stat.description}</div>
               </div>
             ))}

@@ -12,7 +12,9 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dotenv": "^16.4.5",
     "emailjs-com": "^3.2.0",
     "express": "^4.21.1",

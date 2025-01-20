@@ -1,14 +1,13 @@
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
-import { dokuLogo } from "../assets";
 import { navigation } from "../constants";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
-import WebAppButton from './WebAppButton';
 import Section from "./Section";
+import REMedyLogo from "../assets/REMedy_navbar_logo.svg";
 
 const Header = () => {
   const pathname = useLocation();
@@ -32,9 +31,6 @@ const Header = () => {
     setOpenNavigation(false);
   };
 
-  const handleWebAppClick = () => {
-    window.location.href = "https://app.dokudok.dk";
-  };
 
   const handleNavClick = async (e, url) => {
     e.preventDefault();
@@ -84,13 +80,9 @@ const Header = () => {
     handleClick(); // Close mobile menu if open
   };
 
-  const handleLogoClick = async (e) => {
+  const handleLogoClick = (e) => {
     e.preventDefault();
-    if (window.location.pathname !== '/') {
-      await navigate('/');
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    handleClick(); // Close mobile menu if open
+    window.location.href = '/';  // Simple redirect to root URL
   };
 
   return (
@@ -103,9 +95,9 @@ const Header = () => {
         <a 
           href="/"
           onClick={handleLogoClick}
-          className="block w-[8.5rem] xl:mr-8"
+          className="block w-[12rem] xl:mr-8"
         >
-          <img src={dokuLogo} width={140} height={40} alt="DokuDok" />
+          <img src={REMedyLogo} alt="REMedy" />
         </a>
 
         <nav
@@ -151,8 +143,8 @@ const Header = () => {
 
         {/* WebApp Button - now outside navigation */}
         <div className="hidden lg:block">
-          <Button onClick={handleWebAppClick} className="bg-black hover:bg-black text-white font-semibold">
-            Gå til webapp
+          <Button className="bg-black hover:bg-black text-white font-semibold">
+            View WebApp
           </Button>
         </div>
       </div>
