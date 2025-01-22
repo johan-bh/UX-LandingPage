@@ -5,7 +5,7 @@ import { navigation } from "../constants";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Section from "./Section";
 import REMedyLogo from "../assets/REMedy_navbar_logo.svg";
 
@@ -13,6 +13,17 @@ const Header = () => {
   const pathname = useLocation();
   const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [darkMode]);
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -88,7 +99,9 @@ const Header = () => {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] ${
-        openNavigation ? "bg-black" : "bg-white lg:bg-transparent"
+        openNavigation 
+          ? "bg-black" 
+          : "bg-white dark:bg-gray-900 lg:bg-transparent dark:text-white"
       }`}
     >
       <div className="flex items-center px-8 lg:px-7.5 xl:px-10 max-lg:py-4">
@@ -97,13 +110,13 @@ const Header = () => {
           onClick={handleLogoClick}
           className="block w-[12rem] xl:mr-8"
         >
-          <img src={REMedyLogo} alt="REMedy" />
+          <img src={REMedyLogo} alt="REMedy" className="dark:invert" />
         </a>
 
         <nav
           className={`${
             openNavigation ? "flex" : "hidden"
-          } fixed top-0 left-0 right-0 bottom-0 bg-black lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+          } fixed top-0 left-0 right-0 bottom-0 bg-black lg:static lg:flex lg:mx-auto lg:bg-transparent dark:text-white`}
         >
           <div className="relative z-2 flex flex-col items-center justify-start w-full pt-20 lg:flex-row lg:pt-0">
             {navigation.map((item) => {
@@ -116,12 +129,16 @@ const Header = () => {
                   href={item.url}
                   onClick={(e) => handleNavClick(e, item.url)}
                   className={`block relative font-code text-2xl uppercase ${
-                    openNavigation ? "text-white" : item.highlight ? "text-[#1E9AFC] font-bold" : "text-black/50"
+                    openNavigation 
+                      ? "text-white" 
+                      : item.highlight 
+                        ? "text-[#1E9AFC] font-bold" 
+                        : "text-black/50 dark:text-white/50"
                   } ${
                     item.onlyMobile ? "lg:hidden" : ""
                   } px-6 py-4 md:py-6 lg:text-xs lg:font-semibold ${
                     item.url === pathname.hash
-                      ? "text-black"
+                      ? "text-black dark:text-white"
                       : ""
                   } lg:leading-5 xl:px-12 hover:no-underline hover:opacity-70 transition-opacity`}
                 >
@@ -141,10 +158,13 @@ const Header = () => {
           <MenuSvg openNavigation={openNavigation} />
         </Button>
 
-        {/* WebApp Button - now outside navigation */}
+        {/* Dark Mode Toggle Button */}
         <div className="hidden lg:block">
-          <Button className="bg-black hover:bg-black text-white font-semibold">
-            View WebApp
+          <Button 
+            onClick={() => setDarkMode(!darkMode)}
+            className="bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold"
+          >
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
           </Button>
         </div>
       </div>
