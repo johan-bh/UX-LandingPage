@@ -121,8 +121,23 @@ const Header = () => {
         <nav
           className={`${
             openNavigation ? "flex" : "hidden"
-          } fixed top-0 left-0 right-0 bottom-0 bg-black lg:static lg:flex lg:mx-auto lg:bg-transparent dark:text-white`}
+          } fixed top-0 left-0 right-0 bottom-0 lg:static lg:flex lg:mx-auto lg:bg-transparent dark:text-white ${
+            openNavigation ? 'bg-white dark:bg-gray-900 backdrop-blur-sm' : ''
+          }`}
         >
+          {/* Add Dark Mode Toggle for Mobile */}
+          {openNavigation && (
+            <button 
+              onClick={() => setDarkMode(!darkMode)}
+              className="lg:hidden absolute top-[-2rem] left-8 transition-colors duration-200 ease-in-out z-50 bg-transparent"
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <span className={`text-3xl hover:text-blue-400 ${darkMode ? 'text-white' : 'text-black'}`}>
+                {darkMode ? '☀️' : '🌙'}
+              </span>
+            </button>
+          )}
+
           <div className="relative z-2 flex flex-col items-center justify-start w-full pt-20 lg:flex-row lg:pt-0">
             {navigation.map((item) => {
               if (item.id === "4") {
@@ -135,7 +150,7 @@ const Header = () => {
                   onClick={(e) => handleNavClick(e, item.url)}
                   className={`block relative font-code text-2xl uppercase ${
                     openNavigation 
-                      ? "text-white" 
+                      ? darkMode ? "text-white" : "text-black"
                       : item.highlight 
                         ? "text-[#1E9AFC] font-bold" 
                         : "text-black/50 dark:text-white/50"
@@ -167,10 +182,10 @@ const Header = () => {
         <div className="hidden lg:block">
           <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-md text-sm transition-colors duration-200 ease-in-out"
+            className="p-2 rounded-md transition-colors duration-200 ease-in-out"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            <span className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300">
+            <span className="text-4xl text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300">
               {darkMode ? '☀️' : '🌙'}
             </span>
           </button>
