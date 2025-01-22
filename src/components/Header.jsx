@@ -46,7 +46,14 @@ const Header = () => {
   const handleNavClick = async (e, url) => {
     e.preventDefault();
     
-    // If it's a route-based link (FAQs, About, Signup), navigate to the page and scroll to top
+    // If it's the home link, just scroll to top
+    if (url === '#hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      handleClick(); // Close mobile menu if open
+      return;
+    }
+    
+    // For other route-based links (FAQs, About, Signup), navigate to the page
     if (url === '/faqs' || url === '/about' || url === '/signup' || url === '/how-it-works') {
       navigate(url);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,10 +61,9 @@ const Header = () => {
       return;
     }
     
-    // For scroll links, first ensure we're on home page
+    // Rest of the existing scroll logic for other sections...
     if (window.location.pathname !== '/') {
       await navigate('/');
-      // Small delay to ensure DOM is updated
       setTimeout(() => {
         const sectionId = url.replace('#', '');
         const element = document.getElementById(sectionId);
@@ -73,7 +79,6 @@ const Header = () => {
         }
       }, 100);
     } else {
-      // Already on home page, just scroll
       const sectionId = url.replace('#', '');
       const element = document.getElementById(sectionId);
       if (element) {
@@ -93,7 +98,7 @@ const Header = () => {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    window.location.href = '/';  // Simple redirect to root URL
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -101,7 +106,7 @@ const Header = () => {
       className={`fixed top-0 left-0 w-full z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] ${
         openNavigation 
           ? "bg-black" 
-          : "bg-white dark:bg-gray-900 lg:bg-transparent dark:text-white"
+          : "bg-gray-50 dark:bg-gray-800"
       }`}
     >
       <div className="flex items-center px-8 lg:px-7.5 xl:px-10 max-lg:py-4">
@@ -160,12 +165,15 @@ const Header = () => {
 
         {/* Dark Mode Toggle Button */}
         <div className="hidden lg:block">
-          <Button 
+          <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold"
+            className="p-2 rounded-md text-sm transition-colors duration-200 ease-in-out"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? '☀️ Light' : '🌙 Dark'}
-          </Button>
+            <span className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300">
+              {darkMode ? '☀️' : '🌙'}
+            </span>
+          </button>
         </div>
       </div>
     </div>
