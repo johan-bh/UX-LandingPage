@@ -129,4 +129,5 @@ export default {
       });
     }),
   ],
+  darkMode: 'class',
 };
