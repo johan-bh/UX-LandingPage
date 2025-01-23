@@ -871,8 +871,13 @@ svg {
 }
 
 
+.right-\[-74px\] {
+  right: -55px !important;
+}
 
-
+.w-\[60\%\] {
+  width: 80% !important;
+}
 
 .fixed.top-0.left-0.w-full.z-50 button, .fixed.top-0.left-0.w-full.z-50 button {
   background: black !important;

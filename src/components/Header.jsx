@@ -13,17 +13,6 @@ const Header = () => {
   const pathname = useLocation();
   const navigate = useNavigate();
   const [openNavigation, setOpenNavigation] = useState(false);
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false');
-    }
-  }, [darkMode]);
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -125,19 +114,6 @@ const Header = () => {
             openNavigation ? 'bg-white dark:bg-gray-900 backdrop-blur-sm' : ''
           }`}
         >
-          {/* Add Dark Mode Toggle for Mobile */}
-          {openNavigation && (
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className="lg:hidden absolute top-[-2rem] left-8 transition-colors duration-200 ease-in-out z-50 bg-transparent"
-              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              <span className={`text-3xl hover:text-blue-400 ${darkMode ? 'text-white' : 'text-black'}`}>
-                {darkMode ? '☀️' : '🌙'}
-              </span>
-            </button>
-          )}
-
           <div className="relative z-2 flex flex-col items-center justify-start w-full pt-20 lg:flex-row lg:pt-0">
             {navigation.map((item) => {
               if (item.id === "4") {
@@ -150,7 +126,7 @@ const Header = () => {
                   onClick={(e) => handleNavClick(e, item.url)}
                   className={`block relative font-code text-2xl uppercase ${
                     openNavigation 
-                      ? darkMode ? "text-white" : "text-black"
+                      ? "text-black"
                       : item.highlight 
                         ? "text-[#1E9AFC] font-bold" 
                         : "text-black/50 dark:text-white/50"
@@ -177,19 +153,6 @@ const Header = () => {
         >
           <MenuSvg openNavigation={openNavigation} />
         </Button>
-
-        {/* Dark Mode Toggle Button */}
-        <div className="hidden lg:block">
-          <button 
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-md transition-colors duration-200 ease-in-out"
-            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            <span className="text-4xl text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300">
-              {darkMode ? '☀️' : '🌙'}
-            </span>
-          </button>
-        </div>
       </div>
     </div>
   );

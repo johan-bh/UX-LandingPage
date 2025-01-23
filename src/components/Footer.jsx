@@ -15,8 +15,14 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Right: Logos */}
+        {/* Right: Logos and Trustpilot */}
         <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-6 sm:gap-8">
+          {/* Trustpilot Score */}
+          <div className="flex flex-col items-end">
+            <span className="font-semibold text-[#00B67A] text-sm">4.8/5</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">on Trustpilot</span>
+          </div>
+
           <a
             href="https://www.skylab.dtu.dk/"
             target="_blank"

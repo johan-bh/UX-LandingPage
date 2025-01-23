@@ -71,6 +71,31 @@ export default {
         "conic-gradient":
           "conic-gradient(from 225deg, #FFC876, #79FFF7, #9F53FF, #FF98E2, #FFC876)",
       },
+      keyframes: {
+        'subtle-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
+          '50%': { transform: 'scale(1.02)', opacity: '1' }
+        },
+        'border-pulse': {
+          '0%, 100%': { opacity: '0.15', transform: 'scale(1)' },
+          '50%': { opacity: '0.25', transform: 'scale(1.01)' }
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        }
+      },
+      animation: {
+        'subtle-pulse': 'subtle-pulse 2s ease-in-out 1',
+        'border-pulse': 'border-pulse 2s ease-in-out 1',
+        'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
+      }
     },
   },
   plugins: [
@@ -129,5 +154,4 @@ export default {
       });
     }),
   ],
-  darkMode: 'class',
 };
