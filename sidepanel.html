@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sleep Dashboard</title>
+  <!-- Load Chart.js from a CDN (v4.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Page background: Replace with your actual hero image */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('your-hero-image.jpg') no-repeat center center / cover;
+      font-family: sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main container: flex layout for left panel + right chart */
+    .dashboard-container {
+      width: 90%;
+      max-width: 1200px;
+      height: 600px;  /* Fixed height */
+      display: flex;
+      background: #000; /* solid black background */
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Left side panel (fixed width) */
+    .side-panel {
+      width: 300px;        /* adjust as you like */
+      height: 100%;        /* fill container height */
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+      border-right: 1px solid #444;
+      overflow-y: auto;    /* add scrolling if needed */
+    }
+
+    .panel-heading {
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Each small chart container */
+    .small-chart-container {
+      margin-bottom: 16px; 
+      background: #111;
+      border-radius: 6px;
+      padding: 10px;
+      flex-shrink: 0;      /* prevent chart compression */
+      height: 150px;       /* fixed container height */
+    }
+
+    .small-chart-container:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Force small charts to a fixed height */
+    .small-chart {
+      width: 100%;
+      height: 120px !important;  /* force fixed height with !important */
+      max-height: 120px;        /* ensure max height is respected */
+    }
+
+    /* Right side: large chart area */
+    .main-chart-area {
+      flex: 1;            /* fill remaining space */
+      height: 100%;       /* fill container height */
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;   /* prevent overflow */
+    }
+
+    /* Main chart header styles */
+    .main-chart-header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .now-playing {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .spotify-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #1DB954;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .spotify-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Big chart container on the right side */
+    .big-chart-container {
+      flex: 1;
+      background: #111;
+      border-radius: 6px;
+      padding: 10px;
+      overflow: hidden;   /* prevent overflow */
+    }
+
+    .big-chart {
+      width: 100%;
+      height: 100%; /* let Chart.js handle responsive scaling */
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+  <!-- LEFT SIDE PANEL -->
+  <div class="side-panel">
+    
+    <!-- 1) Core Body Temp -->
+    <div class="small-chart-container">
+      <div class="panel-heading">Core Body Temp</div>
+      <canvas id="tempChart" class="small-chart"></canvas>
+    </div>
+
+    <!-- 2) Heart Rate -->
+    <div class="small-chart-container">
+      <div class="panel-heading">Heart Rate</div>
+      <canvas id="heartChart" class="small-chart"></canvas>
+    </div>
+
+    <!-- 3) Audible Levels -->
+    <div class="small-chart-container">
+      <div class="panel-heading">Audible Levels</div>
+      <canvas id="audioChart" class="small-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: MAIN CHART (Sleep Stages) -->
+  <div class="main-chart-area">
+    <div class="main-chart-header">
+      <div>
+        <h2 style="margin: 5px 0;">Temperature: 18°C</h2>
+        <p style="margin: 5px 0;"><strong>State:</strong> Light Sleep &mdash; Initiating wake-up process</p>
+      </div>
+      <div class="now-playing">
+        <div class="spotify-dot"></div>
+        <span>Now Playing: What a Wonderful World</span>
+        <svg class="spotify-icon" viewBox="0 0 24 24" fill="#1DB954">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="big-chart-container">
+      <canvas id="sleepChart" class="big-chart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+  /***************************************************************************
+   * 1) Small Line Chart: Core Body Temp
+   **************************************************************************/
+  const tempCtx = document.getElementById('tempChart').getContext('2d');
+
+  // Example data: 8 data points from 10 PM to 6 AM
+  const tempData = {
+    labels: [
+      '10 PM','12 AM','2 AM','4 AM','6 AM'
+    ],
+    datasets: [{
+      label: 'Core Temp (°C)',
+      data: [37.1, 36.8, 36.6, 36.7, 36.9], // sample values
+      borderColor: '#f5a623',
+      backgroundColor: '#f5a62388', // semi-transparent fill
+      fill: true,
+      tension: 0.3
+    }]
+  };
+
+  const tempChart = new Chart(tempCtx, {
+    type: 'line',
+    data: tempData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      scales: {
+        x: {
+          ticks: { 
+            color: '#fff',
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 5
+          }
+        },
+        y: {
+          ticks: { color: '#fff' },
+          suggestedMin: 35.5,
+          suggestedMax: 38
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.y} °C`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  /***************************************************************************
+   * 2) Small Line Chart: Heart Rate
+   **************************************************************************/
+  const heartCtx = document.getElementById('heartChart').getContext('2d');
+
+  // Example data: heart rate over the night
+  const heartData = {
+    labels: [
+      '10 PM','12 AM','2 AM','4 AM','6 AM'
+    ],
+    datasets: [{
+      label: 'Heart Rate (bpm)',
+      data: [65, 60, 58, 62, 65],
+      borderColor: '#ff4466',
+      backgroundColor: '#ff446688',
+      fill: true,
+      tension: 0.3
+    }]
+  };
+
+  const heartChart = new Chart(heartCtx, {
+    type: 'line',
+    data: heartData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      scales: {
+        x: {
+          ticks: { 
+            color: '#fff',
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 5
+          }
+        },
+        y: {
+          ticks: { color: '#fff' },
+          suggestedMin: 50,
+          suggestedMax: 80
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.y} bpm`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  /***************************************************************************
+   * 3) Small Line Chart: Audible Levels
+   **************************************************************************/
+  const audioCtx = document.getElementById('audioChart').getContext('2d');
+
+  // Example data: decibel levels or "audible" measure (arbitrary scale)
+  const audioData = {
+    labels: [
+      '10 PM','12 AM','2 AM','4 AM','6 AM'
+    ],
+    datasets: [{
+      label: 'Audible (dB)',
+      data: [30, 25, 20, 22, 28],
+      borderColor: '#7b61ff',
+      backgroundColor: '#7b61ff88',
+      fill: true,
+      tension: 0.3
+    }]
+  };
+
+  const audioChart = new Chart(audioCtx, {
+    type: 'line',
+    data: audioData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      scales: {
+        x: {
+          ticks: { 
+            color: '#fff',
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 5
+          }
+        },
+        y: {
+          ticks: { color: '#fff' },
+          suggestedMin: 0,
+          suggestedMax: 50
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.y} dB`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+
+  /***************************************************************************
+   * 4) Main Chart on the Right: Sleep Stages (Horizontal Stacked Bar)
+   **************************************************************************/
+  const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+
+  // Example: 5 cycles (each ~90 min) with varying proportions + final Awake period
+  const sleepLabels = [
+    'Cycle 1', 
+    'Cycle 2', 
+    'Cycle 3', 
+    'Cycle 4', 
+    'Cycle 5',
+    'Awake'
+  ];
+
+  const sleepData = {
+    labels: sleepLabels,
+    datasets: [
+      {
+        label: 'Light (1st)',
+        data: [15, 12, 8, 10, 5, 0],  // More light sleep early in the night
+        backgroundColor: '#4e9fee'
+      },
+      {
+        label: 'Deep',
+        data: [45, 35, 25, 15, 10, 0],  // Deep sleep decreases throughout the night
+        backgroundColor: '#26367a'
+      },
+      {
+        label: 'Light (2nd)',
+        data: [20, 25, 30, 35, 40, 0],  // Light sleep increases
+        backgroundColor: '#4e9fee'
+      },
+      {
+        label: 'REM',
+        data: [10, 18, 27, 30, 35, 0],  // REM increases throughout the night
+        backgroundColor: '#6b4fa0'
+      },
+      {
+        label: 'Awake',
+        data: [0, 0, 0, 0, 0, 25],     // Final wake period
+        backgroundColor: '#bbb'
+      }
+    ]
+  };
+
+  const sleepConfig = {
+    type: 'bar',
+    data: sleepData,
+    options: {
+      indexAxis: 'y',          // horizontal bar
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          stacked: true,
+          ticks: { color: '#fff' },
+          title: {
+            display: true,
+            text: 'Minutes',
+            color: '#fff'
+          }
+        },
+        y: {
+          stacked: true,
+          ticks: { color: '#fff' },
+          title: {
+            display: true,
+            text: 'Sleep Cycles',
+            color: '#fff'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#fff'
+          }
+        },
+        tooltip: {
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          callbacks: {
+            label: function(context) {
+              const stage = context.dataset.label;
+              const minutes = context.parsed.x;
+              return `${stage}: ${minutes} min`;
+            }
+          }
+        }
+      }
+    }
+  };
+
+  new Chart(sleepCtx, sleepConfig);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sleep Stages (Chart.js) - Black Overlay</title>
+  <style>
+    /* Page background: Replace with your actual hero image */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('your-hero-image.jpg') no-repeat center center / cover;
+      font-family: sans-serif;
+      display: flex;           /* center container horizontally & vertically */
+      align-items: center;     
+      justify-content: center;
+      min-height: 100vh;       /* so the container is nicely centered on the page */
+    }
+
+    .chart-container {
+      background: #000;         /* solid black background */
+      color: #fff;              /* white text color */
+      width: 90%;               /* wider container */
+      max-width: 1000px;        /* you can increase this if desired */
+      border-radius: 8px;
+      padding: 10px;            /* less padding to make it shorter */
+      box-sizing: border-box;
+    }
+
+    .chart-header {
+      margin-bottom: 8px;
+    }
+
+    .chart-header h2,
+    .chart-header p {
+      margin: 4px 0;
+    }
+
+    /* Canvas container: limit height */
+    .chart-wrapper {
+      height: 300px;     /* make the chart area shorter */
+    }
+
+    /* Override chart.js default tooltip and legend text to be white */
+    .chartjs-render-monitor {
+      color: #000; /* the canvas “text” color is typically not used, 
+                      but just in case we set it to black 
+                      (Chart elements are usually set via config) */
+    }
+  </style>
+</head>
+<body>
+
+<div class="chart-container">
+  <div class="chart-header">
+    <h2>Temperature: 18°C</h2>
+    <p><strong>State:</strong> Light Sleep – Initiating wake-up process</p>
+  </div>
+
+  <!-- We wrap the canvas in a div with a fixed height to ensure the chart is shorter -->
+  <div class="chart-wrapper">
+    <canvas id="sleepChart"></canvas>
+  </div>
+</div>
+
+<!-- Load Chart.js from a CDN (v4.x) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  /*
+   Each "cycle" is about 90 minutes. For demonstration, 
+   we break each cycle into 4 segments:
+     Light(10) + Deep(40) + Light(20) + REM(20)
+   Then one final Awake(30) segment for the last half-hour.
+  */
+
+  const labels = [
+    'Cycle 1', 
+    'Cycle 2', 
+    'Cycle 3', 
+    'Cycle 4', 
+    'Cycle 5',
+    'Awake'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Light Sleep (1st)',
+        data: [10, 10, 10, 10, 10, 0],
+        backgroundColor: '#4e9fee'
+      },
+      {
+        label: 'Deep Sleep',
+        data: [40, 40, 40, 40, 40, 0],
+        backgroundColor: '#26367a'
+      },
+      {
+        label: 'Light Sleep (2nd)',
+        data: [20, 20, 20, 20, 20, 0],
+        backgroundColor: '#4e9fee'
+      },
+      {
+        label: 'REM',
+        data: [20, 20, 20, 20, 20, 0],
+        backgroundColor: '#6b4fa0'
+      },
+      {
+        label: 'Awake',
+        data: [0, 0, 0, 0, 0, 30],
+        backgroundColor: '#bbb'
+      }
+    ]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false, /* allows the chart to shrink vertically */
+      scales: {
+        x: {
+          stacked: true,
+          title: {
+            display: true,
+            text: 'Minutes',
+            color: '#fff' /* x-axis label in white */
+          },
+          ticks: {
+            color: '#fff' /* x-axis tick labels in white */
+          }
+        },
+        y: {
+          stacked: true,
+          title: {
+            display: true,
+            text: 'Sleep Cycles',
+            color: '#fff' /* y-axis label in white */
+          },
+          ticks: {
+            color: '#fff' /* y-axis tick labels in white */
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#fff'  /* legend text in white */
+          }
+        },
+        tooltip: {
+          titleColor: '#fff',  /* tooltip title text color */
+          bodyColor: '#fff',   /* tooltip body text color */
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          callbacks: {
+            label: function(context) {
+              const stage = context.dataset.label;
+              const minutes = context.parsed.x;
+              return `${stage}: ${minutes} min`;
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // Render the chart
+  const sleepChartCanvas = document.getElementById('sleepChart');
+  new Chart(sleepChartCanvas, config);
+</script>
+
+</body>
+</html>

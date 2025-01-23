@@ -1,0 +1,1483 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sora: "Sora", sans-serif;
+  --font-code: "Source Code Pro", monospace;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  color-scheme: light;
+}
+
+* {
+  scroll-behavior: smooth
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-white text-black text-base;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+.bg-n-8\/90 {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+.rotate-45 {
+  @apply rotate-[45deg]
+}
+
+.rotate-90 {
+  @apply rotate-[90deg]
+}
+
+.rotate-135 {
+  @apply rotate-[135deg]
+}
+
+.rotate-180 {
+  @apply rotate-[180deg]
+}
+
+.rotate-225 {
+  @apply rotate-[225deg]
+}
+
+.rotate-270 {
+  @apply rotate-[270deg]
+}
+
+.rotate-315 {
+  @apply rotate-[315deg]
+}
+
+.rotate-360 {
+  @apply rotate-[360deg]
+}
+
+.-rotate-45 {
+  @apply rotate-[-45deg]
+}
+
+.-rotate-90 {
+  @apply rotate-[-90deg]
+}
+
+.-rotate-135 {
+  @apply rotate-[-135deg]
+}
+
+.-rotate-180 {
+  @apply rotate-[-180deg]
+}
+
+.-rotate-225 {
+  @apply rotate-[-225deg]
+}
+
+.-rotate-270 {
+  @apply rotate-[-270deg]
+}
+
+.-rotate-315 {
+  @apply rotate-[-315deg]
+}
+
+.-rotate-360 {
+  @apply rotate-[-360deg]
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+}
+
+
+.modal {
+  background: #FFFFFF;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bg-stroke-1 {
+  background: none !important;
+  display: none !important;
+}
+
+nav.fixed.top-0.left-0 {
+  background-color: black !important; /* Ensure full black background */
+}
+
+
+.backdrop-blur-sm {
+  backdrop-filter: none !important; /* Disable blur effect */
+}
+
+
+nav.fixed a {
+  color: white !important; /* Set mobile nav links to white */
+}
+
+
+/* navbar */
+nav a {
+  color: white !important;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+
+.nav-link {
+  color: black !important;
+  font-size: 1rem !important;
+  margin-left: 3.5rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.text-n-1 {
+  color: black !important;
+}
+
+.text-n-1\/50 {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.hover\:text-n-1:hover {
+  color: black !important;
+}
+
+.h2 {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+.text-n-2 {
+  color: #000000 !important;
+}
+.dark .text-n-2 {
+  color: #E5E7EB !important;
+}
+
+
+/* .bg-\[\#F7FBFF\] {
+  background-color: #dbebfa !important;
+} */
+
+/* body .relative.z-1.flex.flex-col.items-start.h-auto.mb-5.p-8 {
+  background-color: #dbebfa !important;
+} */
+
+/* .bg-\[\#F0F9FF\] {
+  background-color: #dbebfa !important;
+} */
+
+/* Add styles for benefit cards */
+.block.relative.p-8 {
+  background-color: #FFFFFF !important;  /* Pure white background */
+  border: 1px solid #F1F3F5 !important;  /* Very subtle border */
+  border-radius: 1rem !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Subtle hover effect */
+
+
+/* Card title (h3) */
+.block.relative.p-8 h3 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Card title (h5) */
+.block.relative.p-8 h5 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+
+
+
+/* Card text */
+.block.relative.p-8 p {
+  color: #6B7280 !important;  /* A lighter gray for better contrast */
+}
+
+/* Update the heading styles for the benefit cards */
+h5.mb-4 {  /* This targets the specific h5 headings in the cards */
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Or alternatively, we can be more specific */
+.block.relative.p-8 > h5 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.mb-5 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+h6 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+p {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+.dark p {
+  color: #E5E7EB !important;
+}
+
+/* General text styles */
+h6:not([class*="border"]) {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+.dark h6:not([class*="border"]) {
+  color: #E5E7EB !important;
+}
+
+p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+.dark p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: #E5E7EB !important;
+}
+
+/* Preserve circular illustration styles */
+.relative.left-1\/2 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+.relative.left-1\/2 .border,
+.relative.left-1\/2 .border-n-6 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Style for the inner circles */
+.relative.left-1\/2 .w-60 {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+.relative.left-1\/2 .w-[6rem] {
+  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Override card text styles */
+.block.relative.p-8 p {
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+}
+
+/* Update dark cards to lighter color */
+.bg-n-8 {
+  background-color: #F3F4F6 !important; /* Light gray background */
+}
+
+/* Ensure text is visible on the lighter background */
+.bg-n-8 h3,
+.bg-n-8 h4,
+.bg-n-8 h5 {
+  color: #000000 !important; /* Black text for headings */
+}
+
+.bg-n-8 p {
+  color: #4B5563 !important; /* Darker gray for better readability */
+}
+
+/* Keep the hover state subtle */
+.bg-n-8:hover {
+  background-color: #E5E7EB !important;
+}
+
+/* Clean up benefit card backgrounds */
+.block.relative.p-0\.5 {
+  background: none !important;
+}
+
+.absolute.inset-0\.5 {
+  background-color: #F3F4F6 !important;
+}
+
+/* Also update any h5 titles in the benefit cards */
+.block.relative.p-8 h5,
+h5.mb-5 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+
+/* Container styles */
+.fixed.top-0.left-0.w-full.z-50 .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 4rem !important;
+  margin: 0 auto !important;
+}
+
+/* Nav link styles */
+.nav-link {
+  color: black !important;
+  font-size: 1rem !important;
+  margin-left: 3.5rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Remove any width constraints */
+.flex.items-center.px-5 {
+  width: 100% !important;
+  padding: 0 4rem !important;
+}
+
+/* Ensure hero section doesn't constrain width */
+#hero {
+  width: 100% !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* Remove the container padding and width constraints */
+.fixed.top-0.left-0.w-full.z-50 .container,
+.fixed.top-0.left-0.w-full.z-50 .px-5 {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Ensure the flex container inside navbar spans full width */
+.flex.items-center {
+  width: 100% !important;
+  gap: 1rem !important;
+}
+
+/* Update dark mode styles */
+.dark .flex.items-center {
+  background: transparent !important;
+}
+
+/* Logo container adjustment */
+.flex.items-center > :first-child {
+  margin-right: none !important;
+}
+
+/* Specific Footer Styling */
+.footer-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  margin: 0;
+  padding: 0;
+  gap: 2rem !important;
+}
+
+
+/* Remove crosses */
+[class*="pointer-events-none"] svg,
+.absolute.pointer-events-none {
+  display: none !important;
+}
+
+/* Reset all navbar link colors with dark mode support */
+.lg\:text-n-1\/50,
+.lg\:text-n-1,
+.text-n-1\/50,
+.text-n-1,
+.nav-link {
+  color: #000000 !important;
+}
+.dark .lg\:text-n-1\/50,
+.dark .lg\:text-n-1,
+.dark .text-n-1\/50,
+.dark .text-n-1,
+.dark .nav-link {
+  color: #E5E7EB !important;
+}
+
+/* Remove any backdrop filters */
+.backdrop-blur-sm,
+.lg\:backdrop-blur-sm {
+  backdrop-filter: none !important;
+}
+
+/* Remove any background colors */
+.bg-n-8,
+.lg\:bg-n-8\/90,
+.bg-n-8\/90 {
+  background: none !important;
+}
+
+/* Navigation specific styles */
+.fixed.top-0.left-0.w-full.z-50 nav a,
+.fixed.top-0.left-0.w-full.z-50 .nav-link,
+.lg\:text-n-1,
+.text-n-1 {
+  color: #000000 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  margin-left: 0 !important;
+}
+
+/* Navigation container */
+.fixed.top-0.left-0.w-full.z-50 nav .flex-row {
+  display: flex !important;
+  width: 100% !important;
+  gap: 3rem !important;
+  margin-right: 2rem !important;
+}
+
+/* Logo styles */
+.fixed.top-0.left-0.w-full.z-50 .w-[12rem] {
+  margin-right: auto !important;
+}
+
+/* Individual navigation links */
+.fixed.top-0.left-0.w-full.z-50 nav a {
+  font-size: 1rem !important;
+  margin-left: 2rem !important;
+  white-space: nowrap !important;
+  color: black !important;
+}
+.dark .fixed.top-0.left-0.w-full.z-50 nav a {
+  color: #E5E7EB !important;
+}
+
+/* Desktop nav styles */
+.fixed.top-0.left-0.w-full.z-50 nav {
+  background: transparent !important;
+}
+
+.dark .fixed.top-0.left-0.w-full.z-50 nav {
+  background: transparent !important;
+}
+
+/* Container background */
+.fixed.top-0.left-0.w-full.z-50 {
+  background: #FFFFFF !important;
+}
+
+.dark .fixed.top-0.left-0.w-full.z-50 {
+  background: rgb(31, 41, 55) !important; /* dark gray-800 */
+}
+
+/* Navigation container and links */
+.relative.z-2.flex.flex-col.items-center.justify-center.m-auto.lg\:flex-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  gap: 2rem !important;
+}
+
+/* Logo container */
+.block.w-\[12rem\].xl\:mr-8 {
+  margin-right: auto !important;
+}
+
+/* Individual nav links */
+.block.relative.font-code.text-2xl.uppercase {
+  font-size: 1rem !important;
+  white-space: nowrap !important;
+}
+
+/* Navigation styles */
+nav .relative.z-2 {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+}
+
+nav .relative.z-2 a {
+  margin-left: 2.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Logo */
+.w-\[12rem\] {
+  margin-right: auto !important;
+}
+
+/* Navigation link hover styles */
+
+
+/* Remove hover effects for containers */
+.fixed.top-0.left-0.w-full.z-50 *:hover {
+  background: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+  text-decoration: none !important;
+}
+
+/* Only keep hover effects for links */
+.fixed.top-0.left-0.w-full.z-50 nav a:hover,
+.nav-link:hover {
+  background: none !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  box-shadow: none !important;
+  opacity: 0.7 !important;
+  text-decoration: none !important;
+}
+.dark .fixed.top-0.left-0.w-full.z-50 nav a:hover,
+.dark .nav-link:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Remove any container background color changes on hover */
+.fixed.top-0.left-0.w-full.z-50 div:hover,
+.fixed.top-0.left-0.w-full.z-50 nav:hover {
+  background: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Keep dark mode background colors consistent */
+.dark .fixed.top-0.left-0.w-full.z-50 div:hover,
+.dark .fixed.top-0.left-0.w-full.z-50 nav:hover {
+  background: #1F2937 !important;
+  opacity: 1 !important;
+}
+
+.circle-container {
+  position: relative;
+  width: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border-radius: 50%; /* Makes it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+}
+
+.transform-origin-center {
+  transform-origin: center;
+}
+
+/* Burger menu specific styles */
+.fixed.top-0.left-0.w-full.z-50 button svg rect {
+  fill: #000000 !important;
+}
+
+
+
+.fixed.top-0.left-0.w-full.z-50 button:hover svg rect {
+  fill: #000000 !important;
+}
+
+/* Override any inherited hover styles for the burger menu */
+.fixed.top-0.left-0.w-full.z-50 button {
+  background: none !important;
+  opacity: 1 !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+  opacity: 1 !important;
+}
+
+/* Menu icon specific styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon rect {
+  fill: #000000 !important;
+}
+
+/* Remove all hover effects for the menu button */
+.fixed.top-0.left-0.w-full.z-50 button {
+  background: transparent !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: transparent !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover * {
+  background: transparent !important;
+  fill: #000000 !important;
+  color: #000000 !important;
+}
+
+/* Menu icon styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon div {
+  background-color: #000 !important;
+  transform-origin: center !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover .menu-icon div {
+  background-color: #000 !important;
+}
+
+/* Remove any hover effects that might interfere */
+.fixed.top-0.left-0.w-full.z-50 button,
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+}
+
+/* 
+button {
+  border: 2px solid red;
+}
+
+svg {
+  border: 2px solid blue;
+}
+ */
+
+/* Clean menu styles */
+.menu-icon {
+  pointer-events: none;
+}
+
+.menu-icon div {
+  background-color: #000 !important;
+  transform-origin: center !important;
+}
+
+/* Remove hover effects but keep transforms */
+.fixed.top-0.left-0.w-full.z-50 button,
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: none !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover .menu-icon div {
+  background-color: #000 !important;
+}
+
+.w-\[60\%\] {
+  width: 40% !important;
+}
+
+/* Mobile navigation spacing */
+@media (max-width: 1024px) {
+  /* Light mode mobile nav */
+  .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Dark mode mobile nav */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: rgb(17, 24, 39) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Center the navigation links container */
+  .fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+    padding-top: 6rem !important;
+    text-align: center !important;
+    background-color: transparent !important;
+  }
+
+  /* Adjust mobile nav links */
+  .fixed.top-0.left-0.w-full.z-50 nav a {
+    margin: 0 !important;
+    padding: 1rem 0 !important;
+    transform: none !important;
+    text-align: center !important;
+    width: 100% !important;
+    color: black !important;
+  }
+
+  /* Dark mode text color */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav a {
+    color: white !important;
+  }
+
+  /* Set mobile nav links to black in light mode, white in dark mode */
+  nav.fixed a {
+    color: black !important;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeSlideDown 0.4s ease forwards;
+  }
+
+  .dark nav.fixed a {
+    color: white !important;
+  }
+
+  /* Align dark mode toggle with burger menu */
+  .fixed.top-0.left-0.w-full.z-50 nav button {
+    top: 1.15rem !important; /* Match burger menu height */
+    left: 2rem !important;
+  }
+
+  /* Remove any xl padding from nav links */
+  .fixed.top-0.left-0.w-full.z-50 nav a.xl\:px-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Remove any conflicting styles */
+  nav.fixed .flex.flex-col {
+    padding-top: 0 !important;
+  }
+
+  .h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Remove backdrop blur */
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+  }
+
+  /* Staggered animation delays for each link */
+  nav.fixed a:nth-child(1) { animation-delay: 0.1s; }
+  nav.fixed a:nth-child(2) { animation-delay: 0.2s; }
+  nav.fixed a:nth-child(3) { animation-delay: 0.3s; }
+  nav.fixed a:nth-child(4) { animation-delay: 0.4s; }
+  nav.fixed a:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Align links to the top */
+  nav.fixed .flex.flex-col {
+    justify-content: flex-start !important;
+    padding-top: 2rem; /* Adjust as needed */
+    gap: 1rem; /* Add spacing between links */
+  }
+
+  /* Individual nav links with staggered animation */
+  .block.w-full.text-center {
+    padding: 0.35rem 0 !important;
+    margin: 0 !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    opacity: 0;
+    animation: slideIn 0.4s ease forwards;
+  }
+
+  /* Staggered delays for each nav item */
+  .block.w-full.text-center:nth-child(1) { animation-delay: 200ms; }
+  .block.w-full.text-center:nth-child(2) { animation-delay: 400ms; }
+  .block.w-full.text-center:nth-child(3) { animation-delay: 600ms; }
+  .block.w-full.text-center:nth-child(4) { animation-delay: 800ms; }
+  .block.w-full.text-center:nth-child(5) { animation-delay: 1000ms; }
+
+  /* Button in mobile nav */
+  .block.w-full.text-center.px-4.py-2 {
+    padding: 0.35rem 0 !important;
+  }
+
+  /* Remove any extra margins from nav items */
+  nav a, nav div {
+    margin: 0 !important;
+  }
+
+  /* Override any desktop color classes on mobile */
+  .lg\:text-black,
+  .lg\:text-black\/50 {
+    color: white !important;
+  }
+
+  /* Mobile nav dark mode fixes */
+  .dark .fixed.top-0.left-0.right-0.bottom-0.bg-black {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Adjust the container holding the links */
+  .relative.flex.flex-col.items-center.justify-start.pt-16 {
+    padding-top: 0.5rem !important; /* Reduce the top padding */
+    gap: 0.25rem !important; /* Reduce the gap between flex items */
+  }
+
+  /* Adjust individual navbar links */
+  .block.w-full.text-center {
+    padding: 0.25rem 0 !important; /* Reduce vertical padding */
+    margin: 0 !important; /* Remove unnecessary margins */
+    font-size: 1.125rem !important; /* Adjust font size if needed */
+    line-height: 1.25 !important; /* Tighten line height */
+  }
+
+  /* Adjust the parent container for a tighter layout */
+  .fixed.inset-0.top-\[5rem\] {
+    top: 4rem !important; /* Adjust the top position of the nav */
+  }
+
+  /* Remove padding from the parent nav container */
+  nav a, nav div {
+    margin: 0 !important;
+    padding: 0.15rem 0 !important;
+  }
+}
+.mobile-nav {
+  padding-top: 1rem !important; /* Reduce top padding */
+  gap: 0.5rem !important; /* Reduce spacing between links */
+}
+
+.mobile-nav-link {
+  padding: 0.25rem 0 !important; /* Reduce vertical padding */
+  margin: 0 !important; /* Remove unnecessary margins */
+  font-size: 1rem !important; /* Adjust font size for compact design */
+  line-height: 1.25 !important; /* Compact line height */
+}
+
+  /* Adjust font size for mobile */
+  .text-\[5\.5rem\] {
+    font-size: 2.5rem !important;
+  }
+
+/* Animation for mobile nav links */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.right-\[-74px\] {
+  right: -55px !important;
+}
+
+.w-\[60\%\] {
+  width: 80% !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button, .fixed.top-0.left-0.w-full.z-50 button {
+  background: black !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button, .fixed.top-0.left-0.w-full.z-50 button:hover p {
+    background: white !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button, .fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: black !important;
+}
+
+
+
+/* Ensure webapp button text stays white */
+.fixed.top-0.left-0.w-full.z-50 button {
+  background: black !important;
+  color: white !important;
+  transition: all 0.5s ease !important;
+  border-radius: 0.25rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover {
+  background: black !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button:hover p,
+.fixed.top-0.left-0.w-full.z-50 button p {
+  background: transparent !important;
+  color: white !important;
+}
+
+/* Button styles with reduced border radius */
+button,
+.button,
+a[class*="button"],
+[class*="Button"] {
+  border-radius: 0.25rem !important; /* Even less rounded than before */
+}
+
+
+
+.fixed.top-0.left-0.w-full.z-50 nav a {
+  font-size: 1rem !important;
+  margin-left: 2rem !important;
+  white-space: nowrap !important;
+  color: black !important;
+}
+
+
+.fixed.top-0.left-0.w-full.z-50 nav {
+  font-size: 1rem !important;
+  margin-left: none !important;
+  white-space: nowrap !important;
+}
+.dark .fixed.top-0.left-0.w-full.z-50 nav {
+  /* Remove this line that's making it transparent */
+  /* background-color: transparent !important; */
+}
+
+
+.fixed.top-0.left-0.w-full.z-50 button:hover svg rect {
+  fill: rgb(255, 255, 255) !important;
+}
+
+.fixed.top-0.left-0.w-full.z-50 button svg rect {
+  fill: rgb(255, 255, 255) !important;
+}
+
+/* Navigation links container */
+.fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+  display: flex !important;
+  justify-content: none !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  .fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+    padding-top: 20rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .fixed.top-0.left-0.w-full.z-50 nav a.xl\:px-12 {
+      padding-left: 2.5rem !important;
+      padding-right: 0 !important;
+      padding-top: 3rem !important;
+  }
+}
+
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 
+p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: white !important;
+  font-weight: 500 !important;
+} */
+
+.modal-text {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-box {
+  background-color: black !important;
+  border-radius: 0.75rem !important;
+}
+
+.modal-box h2,
+.modal-box p,
+.modal-box button {
+  color: white !important;
+}
+
+/* Specific style for modal paragraph */
+.modal-box p.mb-6 {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 0.75rem !important;
+}
+
+/* Specific style for modal message */
+.modal-message {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  padding-right: 15rem !important; /* Default for small screens */
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .text-black {
+    padding-right: 20rem !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .text-black {
+    padding-right: 30rem !important;
+  }
+}
+
+/* Update text-lg to respect dark mode */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #000000 !important;
+}
+.dark .text-lg {
+  color: #E5E7EB !important;
+}
+
+.text-n-4 {
+  color: #000000 !important;
+}
+.dark .text-n-4 {
+  color: #9CA3AF !important;
+}
+
+/* Remove background colors from containers */
+.flex.flex-col.lg\:flex-row,
+.lg\:w-[30\%].xl\:w-[25\%],
+.flex.flex-col {
+  background: transparent !important;
+}
+
+/* Remove any hover background changes */
+.flex.flex-col.lg\:flex-row:hover,
+.lg\:w-[30\%].xl\:w-[25\%]:hover,
+.flex.flex-col:hover {
+  background: transparent !important;
+}
+
+/* Ensure dark mode doesn't add backgrounds */
+.dark .flex.flex-col.lg\:flex-row,
+.dark .lg\:w-[30\%].xl\:w-[25\%],
+.dark .flex.flex-col {
+  background: transparent !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  animation-fill-mode: forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Add new specific styles for mobile nav */
+@media (max-width: 1024px) {
+  /* Light mode mobile nav */
+  .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Dark mode mobile nav */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: rgb(17, 24, 39) !important; /* dark gray-900 */
+    backdrop-filter: none !important;
+  }
+
+  /* Remove any conflicting background colors */
+  .dark nav.fixed {
+    /* Remove this */
+    /* background-color: #111827 !important; */
+  }
+}
+
+/* Remove or update these conflicting styles */
+.fixed.top-0.left-0.w-full.z-50 nav {
+  font-size: 1rem !important;
+  margin-left: none !important;
+  white-space: nowrap !important;
+  /* Remove this */
+  /* background-color: rgb(255, 255, 255) !important; */
+}
+
+.dark .fixed.top-0.left-0.w-full.z-50 nav {
+  /* Remove this */
+  /* background-color: transparent !important; */
+}
+
+/* Desktop nav styles */
+.fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+  background: transparent !important;
+}
+
+/* Mobile nav styles */
+@media (max-width: 1024px) {
+  /* Light mode mobile nav */
+  .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Dark mode mobile nav */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: rgb(17, 24, 39) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Center the navigation links */
+  .fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+    padding-top: 6rem !important;
+    text-align: center !important;
+    background-color: transparent !important;
+  }
+
+  /* Adjust mobile nav links */
+  .fixed.top-0.left-0.w-full.z-50 nav a {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    transform: translateX(-1rem) !important;
+  }
+}
+
+/* Update button styles to exclude dark mode toggle */
+.fixed.top-0.left-0.w-full.z-50 button:not([aria-label*="mode"]) {
+  background: black !important;
+  color: white !important;
+  transition: all 0.5s ease !important;
+  border-radius: 0.25rem !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+/* Ensure the dark mode toggle has no background in both modes */
+.fixed.top-0.left-0.w-full.z-50 button[aria-label*="mode"],
+.fixed.top-0.left-0.w-full.z-50 button[aria-label*="mode"]:hover {
+  background: transparent !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove any hover effects from the toggle */
+.fixed.top-0.left-0.w-full.z-50 button[aria-label*="mode"]:hover {
+  transform: none !important;
+}
+
+/* Keep the black background only for the burger menu button */
+.fixed.top-0.left-0.w-full.z-50 button.ml-auto {
+  background: black !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 0.25rem !important;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 
+p:not([class*="border"]):not([class*="relative left-1/2"]) {
+  color: white !important;
+  font-weight: 500 !important;
+} */
+
+.modal-text {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-box {
+  background-color: black !important;
+  border-radius: 0.75rem !important;
+}
+
+.modal-box h2,
+.modal-box p,
+.modal-box button {
+  color: white !important;
+}
+
+/* Specific style for modal paragraph */
+.modal-box p.mb-6 {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 0.75rem !important;
+}
+
+/* Specific style for modal message */
+.modal-message {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  padding-right: 15rem !important; /* Default for small screens */
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .text-black {
+    padding-right: 20rem !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .text-black {
+    padding-right: 30rem !important;
+  }
+}
+
+/* Update text-lg to respect dark mode */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #000000 !important;
+}
+.dark .text-lg {
+  color: #E5E7EB !important;
+}
+
+.text-n-4 {
+  color: #000000 !important;
+}
+.dark .text-n-4 {
+  color: #9CA3AF !important;
+}
+
+/* Remove background colors from containers */
+.flex.flex-col.lg\:flex-row,
+.lg\:w-[30\%].xl\:w-[25\%],
+.flex.flex-col {
+  background: transparent !important;
+}
+
+/* Remove any hover background changes */
+.flex.flex-col.lg\:flex-row:hover,
+.lg\:w-[30\%].xl\:w-[25\%]:hover,
+.flex.flex-col:hover {
+  background: transparent !important;
+}
+
+/* Ensure dark mode doesn't add backgrounds */
+.dark .flex.flex-col.lg\:flex-row,
+.dark .lg\:w-[30\%].xl\:w-[25\%],
+.dark .flex.flex-col {
+  background: transparent !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  animation-fill-mode: forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Add new specific styles for mobile nav */
+@media (max-width: 1024px) {
+  /* Light mode mobile nav */
+  .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Dark mode mobile nav */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: rgb(17, 24, 39) !important; /* dark gray-900 */
+    backdrop-filter: none !important;
+  }
+
+  /* Remove any conflicting background colors */
+  .dark nav.fixed {
+    /* Remove this */
+    /* background-color: #111827 !important; */
+  }
+}
+
+/* Remove or update these conflicting styles */
+.fixed.top-0.left-0.w-full.z-50 nav {
+  font-size: 1rem !important;
+  margin-left: none !important;
+  white-space: nowrap !important;
+  /* Remove this */
+  /* background-color: rgb(255, 255, 255) !important; */
+}
+
+.dark .fixed.top-0.left-0.w-full.z-50 nav {
+  /* Remove this */
+  /* background-color: transparent !important; */
+}
+
+/* Desktop nav styles */
+.fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+  background: transparent !important;
+}
+
+/* Mobile nav styles */
+@media (max-width: 1024px) {
+  /* Light mode mobile nav */
+  .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Dark mode mobile nav */
+  .dark .fixed.top-0.left-0.w-full.z-50 nav.flex {
+    background-color: rgb(17, 24, 39) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Center the navigation links */
+  .fixed.top-0.left-0.w-full.z-50 nav .relative.z-2 {
+    padding-top: 6rem !important;
+    text-align: center !important;
+    background-color: transparent !important;
+  }
+
+  /* Adjust mobile nav links */
+  .fixed.top-0.left-0.w-full.z-50 nav a {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    transform: translateX(-1rem) !important;
+  }
+}
