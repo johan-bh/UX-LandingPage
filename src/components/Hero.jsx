@@ -22,19 +22,19 @@ const stats = [
     id: 1,
     icon: sleepingQuality,
     text: "Sleep Quality",
-    description: "Advanced algorithms analyze your sleep stages to recommend actionable improvements, ensuring better rest within two weeks"
+    description: "AI-powered sleep stage analysis provides actionable insights for better rest in just two weeks"
   },
   {
     id: 2,
     icon: sleepOnset,
     text: "Sleep Onset",
-    description: "Smart environment controls and personalized wind-down routines help you fall asleep faster and maintain consistent sleep cycles"
+    description: "Smart IoT devices automate your environment for optimal sleep and wake cycles through temperature, light, and sound"
   },
   {
     id: 3,
     icon: personalized,
     text: "Personalized",
-    description: "Our AI learns your unique patterns and preferences to create a tailored sleep optimization plan that evolves with you"
+    description: "Our AI learns your patterns to create tailored recommendations that evolve with your sleep habits"
   }
 ];
 
@@ -539,147 +539,57 @@ const Hero = () => {
           }
         });
       }
-
-      // Sleep Stages Chart
-      const sleepCtx = document.getElementById('heroSleepChart')?.getContext('2d');
-      if (sleepCtx) {
-        new Chart(sleepCtx, {
-          type: 'bar',
-          data: {
-            labels: ['Cycle 1', 'Cycle 2', 'Cycle 3', 'Cycle 4', 'Cycle 5', 'Awake'],
-            datasets: [
-              {
-                label: 'Light (1st)',
-                data: [15, 12, 8, 10, 5, 0],
-                backgroundColor: '#4e9fee'
-              },
-              {
-                label: 'Deep',
-                data: [45, 35, 25, 15, 10, 0],
-                backgroundColor: '#26367a'
-              },
-              {
-                label: 'Light (2nd)',
-                data: [20, 25, 30, 35, 40, 0],
-                backgroundColor: '#4e9fee'
-              },
-              {
-                label: 'REM',
-                data: [10, 18, 27, 30, 35, 0],
-                backgroundColor: '#6b4fa0'
-              },
-              {
-                label: 'Awake',
-                data: [0, 0, 0, 0, 0, 25],
-                backgroundColor: '#bbb'
-              }
-            ]
-          },
-          options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                stacked: true,
-                ticks: { 
-                  color: '#fff',
-                  font: { size: 10 },
-                  callback: value => value + 'm'
-                },
-                grid: { display: false }
-              },
-              y: {
-                stacked: true,
-                ticks: { 
-                  color: '#fff',
-                  font: { size: 10 }
-                },
-                grid: { display: false }
-              }
-            },
-            plugins: {
-              legend: { display: false }
-            }
-          }
-        });
-      }
     }
   }, [heroInView]);
 
   return (
     <Section
-      className="pt-[8rem] -mt-[5.25rem] bg-gray-900 dark:bg-gray-900"
+      className="pt-[6rem] -mt-[4rem] bg-gray-900 dark:bg-gray-900 scale-90 origin-top"
       crosses
-      crossesOffset="lg:translate-y-[5.25rem]"
+      crossesOffset="lg:translate-y-[4rem]"
       customPaddings
       id="hero"
     >
-      <div className="container relative" ref={parallaxRef}>
+      <div className="container relative max-w-[1440px] mx-auto px-8" ref={parallaxRef}>
         {/* Platform Section with Image and Info Boxes */}
         <div 
           ref={heroRef}
-          className={`flex flex-col lg:flex-row items-start gap-0 mb-16 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 opacity-0 dark:bg-gray-800 ${
+          className={`flex flex-col lg:flex-row items-start gap-0 mb-24 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 opacity-0 dark:bg-gray-800 max-w-[1200px] mx-auto ${
             heroInView ? 'animate-fade-in-up' : ''
           }`}
         >
-          <div className="lg:w-[60%] order-2 lg:order-1 relative">
+          <div className="lg:w-[65%] order-2 lg:order-1 relative">
             <img 
               src={sleepingPerson} 
               alt="Peaceful Sleep Experience" 
-              className="w-full h-full object-cover rounded-tl-3xl"
+              className="w-full h-full object-cover rounded-tl-3xl max-h-[500px]"
             />
-            {/* Side Panel Overlay - Positioned higher */}
-            <div className="hidden lg:block absolute left-4 w-[218px] bottom-[35%] h-[30%] lg:translate-y-[50px]">
-              <div className="w-[218px] flex flex-col h-full">
-                <div className="rounded-t-lg p-2 flex-1">
-                  <div className="text-sm font-semibold mb-1 text-white">Core Body Temp</div>
-                  <div className="h-[calc(100%-24px)] bg-black/20 rounded-lg">
-                    <canvas id="heroTempChart"></canvas>
-                  </div>
-                </div>
-                <div className="p-2 flex-1">
-                  <div className="text-sm font-semibold mb-1 text-white">Heart Rate</div>
-                  <div className="h-[calc(100%-24px)] bg-black/20 rounded-lg">
-                    <canvas id="heroHeartChart"></canvas>
-                  </div>
-                </div>
-                <div className="rounded-b-lg p-2 flex-1">
-                  <div className="text-sm font-semibold mb-1 text-white">Audible Levels</div>
-                  <div className="h-[calc(100%-24px)] bg-black/20 rounded-lg">
-                    <canvas id="heroAudioChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Sleep Cycles Overlay - At the bottom */}
-            <div className="absolute bottom-[20%] lg:bottom-[1%] left-0 w-full h-auto lg:h-[45%] rounded-bl-3xl">
-              <div className="absolute bottom-0 left-0 w-full h-full p-2 lg:p-4 pb-3 lg:pb-6">
-                <div className="flex h-full">
-                  {/* Right side main chart */}
-                  <div className="flex-1 flex flex-col items-center lg:items-start ml-0 lg:ml-[238px] text-center lg:text-left">
-                    <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-start mb-2 lg:mb-1 w-full max-w-[280px] lg:max-w-none mx-auto">
-                      <div>
-                        <h3 className="text-[13px] lg:text-lg font-semibold text-white">Temperature: 18°C</h3>
-                        <p className="text-[11px] lg:text-sm text-white"><strong>State:</strong> Light Sleep — Initiating wake-up process</p>
-                        <div className="flex items-center justify-center lg:hidden mt-1">
-                          <img src={spotifyIcon} alt="Spotify" className="w-2.5 h-2.5 mr-1" />
-                          <span className="text-[9px] text-white">
-                            Now Playing: What a Wonderful World
-                          </span>
-                        </div>
-                      </div>
-                      <div className="hidden lg:flex items-center text-sm text-white">
-                        <img src={spotifyIcon} alt="Spotify" className="w-3.5 h-3.5 mr-1.5" />
-                        <span className="flex items-center">
-                          Now Playing: What a Wonderful World
-                        </span>
-                      </div>
+            
+            {/* Temperature and Spotify Overlay */}
+            <div className="absolute bottom-[25%] lg:bottom-[5%] left-0 w-full">
+              <div className="absolute bottom-0 left-0 w-full p-2 lg:p-3 pb-3">
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end max-w-[280px] lg:max-w-none mx-auto 
+                  bg-gradient-to-t from-gray-900/95 via-gray-800/85 to-transparent 
+                  backdrop-blur-lg rounded-lg p-3">
+                  <div>
+                    <h3 className="text-[13px] lg:text-lg font-semibold text-white drop-shadow-lg">
+                      Temperature: 18°C
+                    </h3>
+                    <p className="text-[11px] lg:text-sm text-white drop-shadow-lg">
+                      <strong>State:</strong> Light Sleep — Initiating wake-up process
+                    </p>
+                    <div className="flex items-center justify-center lg:hidden mt-1">
+                      <img src={spotifyIcon} alt="Spotify" className="w-2.5 h-2.5 mr-1" />
+                      <span className="text-[9px] text-white drop-shadow-lg">
+                        Now Playing: What a Wonderful World
+                      </span>
                     </div>
-                    <div className="hidden lg:flex flex-1 bg-black/20 rounded-lg p-0.5 lg:p-2 w-full">
-                      <canvas id="heroSleepChart"></canvas>
-                    </div>
+                  </div>
+                  <div className="hidden lg:flex items-center text-sm text-white drop-shadow-lg">
+                    <img src={spotifyIcon} alt="Spotify" className="w-3.5 h-3.5 mr-1.5" />
+                    <span className="flex items-center">
+                      Now Playing: What a Wonderful World
+                    </span>
                   </div>
                 </div>
               </div>
@@ -687,36 +597,28 @@ const Hero = () => {
           </div>
 
           {/* Text Content */}
-          <div className="lg:w-[35%] text-left order-1 lg:order-2 p-6 lg:p-10">
-            <h1 className="h1 mb-6 dark:text-white">
-              Optimize Your Sleep with AI-Powered Insights
+          <div className="lg:w-[35%] text-center order-1 lg:order-2 p-4 lg:p-6 lg:pt-24">
+            <h1 className="h1 mb-4 lg:mb-6 dark:text-white text-3xl lg:text-4xl">
+              Better Sleep with REMedy
             </h1>
-            <h2 className="body-1 mb-8 text-black/80 dark:text-gray-300">
-              Track, analyze, and improve your sleep patterns with our <span className="text-blue-500">intelligent sleep assistant</span> that adapts to your unique rhythm
+            <h2 className="body-1 mb-6 lg:mb-8 text-black/80 dark:text-gray-300 text-base lg:text-lg">
+              Your personal sleep AI assistant that learns and adapts to your unique patterns
             </h2>
             
-            {/* Added CTA Section */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
-              <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                🌟 Free Sleep Assessment
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Get personalized insights and a 7-day free trial. No credit card required.
-              </p>
-              <Button 
-                className="w-full sm:w-auto !bg-blue-500 hover:!bg-blue-600 !text-white font-semibold"
-                onClick={handleSignupClick}
-              >
-                Start Free Assessment
-              </Button>
-            </div>
+            {/* CTA Button */}
+            <Button 
+              className="w-full sm:w-auto !bg-blue-500 hover:!bg-blue-600 !text-white font-semibold text-sm py-2 mx-auto"
+              onClick={handleSignupClick}
+            >
+              🌟 Start Free Assessment
+            </Button>
           </div>
         </div>
 
         {/* How REMedy Works Section */}
         <div 
           ref={howItWorksRef}
-          className={`container relative mb-32 opacity-0 ${
+          className={`container relative mb-16 opacity-0 ${
             howItWorksInView ? 'animate-fade-in-up' : ''
           }`}
         >
@@ -724,103 +626,10 @@ const Hero = () => {
             How REMedy Works
           </h2>
           
-          {/* Circular figure remains the same */}
-          <div className="relative left-1/2 flex w-[20rem] aspect-square border border-n-6 rounded-full -translate-x-1/2 scale-75 md:scale-100 mb-16">
-            {/* Logo container - centered vertically, right side */}
-            <div className="absolute right-[-74px] top-1/2 -translate-y-1/2 flex items-center justify-center z-10">
-              <img
-                src={REMedyLogo}
-                className="w-[60%] h-[60%] object-contain"
-                alt="brainwave"
-              />
-            </div>
-
-            {/* App icons circle */}
-            <ul className="absolute inset-0">
-              {collabApps.map((app, index) => {
-                const angle = (index * (360 / collabApps.length));
-                
-                // Calculate tooltip position based on icon position
-                const getTooltipPosition = (index) => {
-                  switch(index) {
-                    case 0: // Wind Down (top)
-                      return "left-1/2 -translate-x-1/2 -top-32"; // Position above
-                    case 1: // Wake Up (top right)
-                      return "right-[-300px] md:right-[-300px] -translate-x-0 -top-10 max-md:right-[-80px]"; // Position to the right
-                    case 2: // Temperature (right)
-                      return "right-[-300px] md:right-[-300px] -translate-x-0 top-0 max-md:right-[-60px]"; // Position to the right
-                    case 3: // Analytics (bottom right)
-                      return "right-[-300px] md:right-[-300px] -translate-x-0 bottom-0 max-md:right-[-80px]"; // Position to the right
-                    case 4: // Assessment (bottom left)
-                      return "left-[-300px] md:left-[-300px] -translate-x-0 bottom-0 max-md:left-[-80px]"; // Position to the left
-                    case 5: // IoT/Integrate (left)
-                      return "left-[-300px] md:left-[-300px] -translate-x-0 top-0 max-md:left-[-60px]"; // Position to the left
-                    default:
-                      return "-bottom-20 left-1/2 -translate-x-1/2";
-                  }
-                };
-
-                return (
-                  <li
-                    key={app.id}
-                    className="absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom"
-                    style={{ transform: `rotate(${angle}deg)` }}
-                  >
-                    <div
-                      className="relative -top-[1.6rem] z-50"
-                      style={{ transform: `rotate(-${angle}deg)` }}
-                    >
-                      {/* Icon Container */}
-                      <button 
-                        className="relative flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl transition-all duration-300 
-                          hover:border-[#1E9AFC] hover:shadow-[0_0_15px_rgba(30,154,252,0.25)]
-                          animate-subtle-pulse cursor-pointer
-                          before:absolute before:inset-0 before:rounded-xl before:border-2 before:border-[#1E9AFC]/20 before:animate-border-pulse"
-                        onMouseEnter={() => {
-                          console.log(`Hovering over ${app.title}`);
-                          setHoveredIcon(app.id);
-                        }}
-                        onMouseLeave={() => {
-                          console.log(`Leaving ${app.title}`);
-                          setHoveredIcon(null);
-                        }}
-                      >
-                        <img
-                          className="m-auto relative z-10"
-                          width={app.width}
-                          height={app.height}
-                          alt={app.title}
-                          src={app.icon}
-                        />
-                      </button>
-
-                      {/* Tooltip */}
-                      <div 
-                        className={`fixed ${getTooltipPosition(index)} transition-all duration-300 
-                          bg-[#1E1E1E]/95 backdrop-blur-sm border border-[#1E9AFC]/20 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-sm 
-                          whitespace-normal w-[200px] sm:w-[280px] text-center z-[200] shadow-xl pointer-events-none`}
-                        style={{ 
-                          opacity: hoveredIcon === app.id ? 1 : 0,
-                          transform: `rotate(0deg)`, // Ensure tooltip stays level
-                        }}
-                      >
-                        <h4 className="font-semibold text-[#1E9AFC] mb-1 text-xs sm:text-sm">{app.title}</h4>
-                        <p className="text-gray-300 text-[10px] sm:text-sm leading-relaxed">{app.description}</p>
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <LeftCurve />
-            <RightCurve />
-          </div>
-
-          {/* Enhanced merged cards */}
+          {/* Enhanced merged cards - Moved up */}
           <div 
             ref={statsRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24"
           >
             <div className={`relative flex flex-col items-center text-center p-8 rounded-2xl bg-gradient-to-br from-[#1E9AFC]/10 to-[#1A75FF]/10 border border-gray-800 transition-all duration-300 hover:border-blue-500/30 opacity-0 translate-y-8 ${
               statsInView ? 'animate-fade-in-up delay-[200ms]' : ''
@@ -830,9 +639,9 @@ const Hero = () => {
                 alt="Sleep Quality"
                 className="w-16 h-16 mb-6 text-blue-500"
               />
-              <h3 className="text-xl font-semibold mb-4 text-white">Smart Sleep Analysis</h3>
-              <p className="text-gray-300">
-                Advanced AI algorithms monitor and analyze your sleep stages, including deep sleep and REM cycles, providing comprehensive insights for better rest within two weeks.
+              <h3 className="text-lg font-semibold mb-4 text-white">Smart Sleep Analysis</h3>
+              <p className="text-sm text-gray-300">
+                AI-powered sleep stage analysis provides actionable insights for better rest in just two weeks
               </p>
             </div>
 
@@ -844,9 +653,9 @@ const Hero = () => {
                 alt="Sleep Onset"
                 className="w-16 h-16 mb-6 text-blue-500"
               />
-              <h3 className="text-xl font-semibold mb-4 text-white">Environment Optimization</h3>
-              <p className="text-gray-300">
-                Smart environment controls and personalized wind-down routines help you fall asleep faster, while AI analyzes environmental factors to improve your sleep cycles.
+              <h3 className="text-lg font-semibold mb-4 text-white">Environment Control</h3>
+              <p className="text-sm text-gray-300">
+                Smart IoT devices automate your environment for optimal sleep and wake cycles through temperature, light, and sound
               </p>
             </div>
 
@@ -858,10 +667,187 @@ const Hero = () => {
                 alt="Personalized"
                 className="w-16 h-16 mb-6 text-blue-500"
               />
-              <h3 className="text-xl font-semibold mb-4 text-white">Adaptive Recommendations</h3>
-              <p className="text-gray-300">
-                Our AI learns your unique patterns and preferences to create personalized suggestions, from optimal bedtime adjustments to lifestyle recommendations that evolve with you.
+              <h3 className="text-lg font-semibold mb-4 text-white">Smart Adaptation</h3>
+              <p className="text-sm text-gray-300">
+                Our AI learns your patterns to create tailored recommendations that evolve with your sleep habits
               </p>
+            </div>
+          </div>
+
+          {/* Circular figure section with headline */}
+          <div className="flex items-center justify-center gap-20 mb-24 max-w-[1200px] mx-auto">
+            {/* Left side headline */}
+            <div className="w-1/3 max-w-[400px] pr-20">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white">
+                Check out the REMedy sleep flow
+              </h3>
+              <p className="mt-4 text-gray-300 text-sm lg:text-base">
+                See how our integrated system works together to optimize your sleep experience
+              </p>
+            </div>
+
+            {/* Circular figure - Centered */}
+            <div className="relative flex w-[20rem] aspect-square scale-75 md:scale-100">
+              {/* Connection Arrows */}
+              <svg className="absolute inset-0 w-full h-full" style={{ transform: 'rotate(30deg)' }}>
+                <defs>
+                  <marker
+                    id="arrowhead"
+                    markerWidth="7"
+                    markerHeight="7"
+                    refX="5"
+                    refY="3.5"
+                    orient="auto"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <polygon points="0 0, 7 3.5, 0 7" fill="#1E9AFC" />
+                  </marker>
+                </defs>
+                
+                {/* Curved arrows following the circle */}
+                <g transform="translate(160, 160)">
+                  <path
+                    d="M 0,-155 A 155 155 0 0 1 134,-77"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                  <path
+                    d="M 134,-77 A 155 155 0 0 1 134,77"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                  <path
+                    d="M 134,77 A 155 155 0 0 1 0,155"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                  <path
+                    d="M 0,155 A 155 155 0 0 1 -134,77"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                  <path
+                    d="M -134,77 A 155 155 0 0 1 -134,-77"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                  <path
+                    d="M -134,-77 A 155 155 0 0 1 0,-155"
+                    fill="none"
+                    stroke="#1E9AFC"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                    markerEnd="url(#arrowhead)"
+                    className="opacity-70"
+                  />
+                </g>
+              </svg>
+
+              {/* App icons circle */}
+              <ul className="absolute inset-0 z-10">
+                {collabApps.map((app, index) => {
+                  const getTooltipPosition = (index) => {
+                    switch(index) {
+                      case 0: // Integrate (moved further up)
+                        return "left-[-300px] md:left-[-300px] -translate-x-0 -top-20 max-md:left-[-80px]";
+                      case 1: // Temperature
+                        return "right-[-300px] md:right-[-300px] -translate-x-0 -top-10 max-md:right-[-80px]";
+                      case 2: // Smart Light
+                        return "right-[-300px] md:right-[-300px] -translate-x-0 top-0 max-md:right-[-60px]";
+                      case 3: // Wind Down
+                        return "right-1/2 md:right-[-350px] -translate-x-0 -top-[100px] z-[999999]";
+                      case 4: // Wake Up (adjusted halfway)
+                        return "right-[-400px] md:right-[-0px] -translate-x-0 bottom-[-150px] max-md:right-[-80px] z-[999999]";
+                      case 5: // Analytics
+                        return "left-[-300px] md:left-[-300px] -translate-x-0 bottom-0 max-md:left-[-80px]";
+                      default:
+                        return "-bottom-20 left-1/2 -translate-x-1/2";
+                    }
+                  };
+
+                  const angle = (index * (360 / collabApps.length));
+                  
+                  return (
+                    <li
+                      key={app.id}
+                      className="absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom"
+                      style={{ transform: `rotate(${angle}deg)` }}
+                    >
+                      <div
+                        className="relative -top-[1.6rem] z-50"
+                        style={{ transform: `rotate(-${angle}deg)` }}
+                      >
+                        {/* Icon Container */}
+                        <button 
+                          className="relative flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl transition-all duration-300 
+                            hover:border-[#1E9AFC] hover:shadow-[0_0_15px_rgba(30,154,252,0.25)]
+                            animate-subtle-pulse cursor-pointer
+                            before:absolute before:inset-0 before:rounded-xl before:border-2 before:border-[#1E9AFC]/20 before:animate-border-pulse"
+                          onMouseEnter={() => setHoveredIcon(app.id)}
+                          onMouseLeave={() => setHoveredIcon(null)}
+                        >
+                          <img
+                            className="m-auto relative z-10"
+                            width={app.width}
+                            height={app.height}
+                            alt={app.title}
+                            src={app.icon}
+                          />
+                          {/* Number Badge - Repositioned to top center */}
+                          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-[#1E9AFC] border-2 border-gray-900 flex items-center justify-center z-20">
+                            <span className="text-[10px] font-bold text-white">
+                              {Number(app.id) + 1}
+                            </span>
+                          </div>
+                        </button>
+
+                        {/* Tooltip */}
+                        <div 
+                          className={`fixed ${getTooltipPosition(index)} transition-all duration-300 
+                            bg-[#1E1E1E]/95 backdrop-blur-sm border border-[#1E9AFC]/20 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-xl text-sm 
+                            whitespace-normal w-[200px] sm:w-[280px] text-center z-[999999] shadow-xl pointer-events-none`}
+                          style={{ 
+                            opacity: hoveredIcon === app.id ? 1 : 0,
+                            transform: `rotate(0deg)`,
+                          }}
+                        >
+                          <h4 className="font-semibold text-[#1E9AFC] mb-1 text-xs sm:text-sm">{app.title}</h4>
+                          <p className="text-gray-300 text-[10px] sm:text-sm leading-relaxed">{app.description}</p>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* Logo container */}
+              <div className="absolute right-[-74px] top-1/2 -translate-y-1/2 flex items-center justify-center z-20">
+                <img
+                  src={REMedyLogo}
+                  className="w-[60%] h-[60%] object-contain"
+                  alt="brainwave"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -869,26 +855,36 @@ const Hero = () => {
         {/* Testimonials Section */}
         <div 
           ref={testimonialsRef} 
-          className={`relative pt-16 pb-8 opacity-0 ${
+          className={`relative pt-4 -mb-40 opacity-0 ${
             testimonialsInView ? 'animate-fade-in-up' : ''
           }`}
         >
           <div className="relative max-w-[1440px] mx-auto">
             {/* Section Header */}
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-white">
               What Our Customers Say
             </h2>
 
-            {/* Centered Slide Indicator - Responsive positioning */}
-            {testimonialsInView && currentTestimonial === 0 && (
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mb-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentTestimonial === index 
+                      ? 'bg-[#1E9AFC] w-6' 
+                      : 'bg-gray-600 hover:bg-gray-500'
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Centered Slide Indicator - Hide on last testimonial */}
+            {testimonialsInView && currentTestimonial < testimonials.length - 1 && (
               <div className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-20">
-                <motion.div
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  variants={arrowVariants}
-                  className="flex items-center gap-2 text-[#1E9AFC]"
-                >
+                <div className="flex items-center gap-2 text-[#1E9AFC]">
                   <svg 
                     width="32" 
                     height="24" 
@@ -904,12 +900,15 @@ const Hero = () => {
                     />
                   </svg>
                   <span className="text-sm text-gray-400">Swipe to see more</span>
-                </motion.div>
+                </div>
               </div>
             )}
 
             {/* Testimonials container */}
-            <div {...handlers} className="relative h-[800px] md:h-[500px] mb-8 cursor-grab active:cursor-grabbing overflow-hidden">
+            <div 
+              {...handlers} 
+              className="relative h-[600px] md:h-[400px] cursor-grab active:cursor-grabbing overflow-hidden"
+            >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -930,10 +929,10 @@ const Hero = () => {
                       delay: 0.2,
                       ease: "easeOut" 
                     }}
-                    className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 relative"
+                    className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 relative"
                   >
                     {/* Testimonial text */}
-                    <div className="w-full md:w-1/2 bg-gradient-to-br from-[#1E9AFC]/5 to-[#1A75FF]/5 rounded-2xl p-6 md:p-8 h-[360px] flex flex-col justify-center">
+                    <div className="w-full md:w-1/2 bg-gradient-to-br from-[#1E9AFC]/5 to-[#1A75FF]/5 rounded-2xl p-6 md:p-8 h-[320px] flex flex-col justify-center">
                       <p className="text-lg leading-relaxed mb-8 text-gray-200 max-w-[90%] text-left pt-8">
                         {testimonial.content.split(testimonial.highlight).map((part, i, arr) => (
                           <span key={`testimonial-${index}-part-${i}`}>
@@ -962,7 +961,7 @@ const Hero = () => {
                     </div>
 
                     {/* Chart container */}
-                    <div className="w-full md:w-1/2 bg-gray-800 rounded-2xl p-6 md:p-8 overflow-hidden flex flex-col h-[360px]">
+                    <div className="w-full md:w-1/2 bg-gray-800 rounded-2xl p-6 md:p-8 overflow-hidden flex flex-col h-[320px]">
                       <div className="metrics grid grid-cols-3 gap-3 md:gap-6 mb-6">
                         <div className="text-center">
                           <div className="text-lg font-bold text-[#1E9AFC]">{testimonial.chartData.improvement}</div>

@@ -1,8 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
-
 @tailwind base;
+
+/* Custom Scrollbar Styles */
+@layer base {
+  * {
+    scrollbar-width: thin;  /* Firefox */
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;  /* Firefox */
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+
+  /* Dark mode */
+  .dark {
+    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;  /* Firefox */
+  }
+
+  .dark::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.5);
+  }
+
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(75, 85, 99, 0.7);
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -273,7 +311,7 @@ p:not([class*="border"]):not([class*="relative left-1/2"]) {
 
 /* Preserve circular illustration styles */
 .relative.left-1\/2 {
-  border: 2px solid rgba(0, 0, 0, 0.5) !important;
+  border: none !important;
 }
 
 .relative.left-1\/2 .border,
@@ -1519,4 +1557,23 @@ p:not([class*="border"]):not([class*="relative left-1/2"]) {
 
 .dark .bg-gray-800 {
   background-color: #1F2937 !important;
+}
+
+/* Update navbar styles */
+nav.fixed.top-0.left-0.w-full {
+  z-index: 1000 !important; /* Increased z-index to go over scrollbar */
+  width: 100vw !important; /* Extend past the scrollbar */
+  left: 0 !important;
+  right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Optional: Add some padding to account for the scrollbar */
+nav.fixed.top-0.left-0.w-full .container {
+  padding-right: calc(1rem + 6px) !important; /* 6px is the scrollbar width we defined earlier */
+}
+
+/* Ensure the backdrop stays behind content */
+.backdrop-blur-sm {
+  z-index: 999 !important;
 }

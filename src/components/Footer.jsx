@@ -6,17 +6,17 @@ import camAauLogo from "../assets/socials/CAM_AAU.svg";
 
 const Footer = () => {
   return (
-    <Section className="!px-0 !py-6 sm:!py-4 bg-gray-50 dark:bg-gray-800/95">
+    <Section className="!px-0 !py-2 bg-gray-50 dark:bg-gray-800/95">
       <div className="w-full px-4 sm:px-8 flex flex-col-reverse sm:flex-row items-center">
         {/* Left: Copyright */}
-        <div className="flex flex-row flex-wrap items-center justify-center w-full sm:w-auto sm:mr-auto text-xs sm:text-sm mt-6 sm:mt-0">
+        <div className="flex flex-row flex-wrap items-center justify-center w-full sm:w-auto sm:mr-auto text-xs sm:text-sm mt-2 sm:mt-0">
           <p className="caption text-gray-600 dark:text-gray-300">
             © {new Date().getFullYear()} REMedy. All rights reserved
           </p>
         </div>
 
         {/* Right: Logos and Trustpilot */}
-        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-6 sm:gap-8">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2 sm:gap-3">
           {/* Trustpilot Score */}
           <div className="flex flex-col items-end">
             <span className="font-semibold text-[#00B67A] text-sm">4.8/5</span>

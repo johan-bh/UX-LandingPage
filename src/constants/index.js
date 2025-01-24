@@ -7,7 +7,8 @@ import {
   assessment,
   iot,
   sleep,
-  getUp
+  getUp,
+  smartLight
 } from "../assets";
 
 export const navigation = [
@@ -57,49 +58,49 @@ export const collabText = "Your collaboration text here";
 export const collabApps = [
   {
     id: "0",
-    title: "Wind Down Routine",
-    description: "Through our sleep assessment we will determine your chronotype to optimize sleep scheduling",
-    icon: sleep,
+    title: "IoT Hub",
+    description: "Our centralized hub for all your smart devices will sync to your schedule and preferences",
+    icon: iot,
     width: 34,
     height: 34,
   },
   {
     id: "1",
-    title: "Wake Up",
-    description: "Smoothly transition to a wakeful state through gradual introduction of ambient light & noise",
-    icon: getUp,
-    width: 34,
-    height: 34,
-  },
-  {
-    id: "2",
-    title: "Temperature",
-    description: "Our system will autoregulate the ambient room temperature for ideal sleeping conditions",
+    title: "Climate Control",
+    description: "Our system will autoregulate the ambient room temperature. Gradual cooling in the evening and gradual warming in the morning",
     icon: temperatures,
     width: 34,
     height: 34,
   },
   {
+    id: "2",
+    title: "Smart Light",
+    description: "Adaptive lighting that adjusts based on your sleep cycle and circadian rhythm. Shifts to red light in the evening and blue light in the morning",
+    icon: smartLight,
+    width: 34,
+    height: 34,
+  },
+  {
     id: "3",
-    title: "Analytics",
-    description: "Monitor your sleep hygiene and progress with our advanced dashboards",
-    icon: webAnalytics,
+    title: "Wind Down Routine",
+    description: "Through our sleep assessment, daily schedule & ongoing calibration we initiate a wind down routine to induce sleep",
+    icon: sleep,
     width: 34,
     height: 34,
   },
   {
     id: "4",
-    title: "Assessment",
-    description: "Through our sleep assessment we will determine your chronotype to optimize sleep scheduling",
-    icon: assessment,
+    title: "Wake Up",
+    description: "Smoothly transition to a wakeful state through gradual introduction of ambient light & noise based on schedule and sleep state",
+    icon: getUp,
     width: 34,
     height: 34,
   },
   {
     id: "5",
-    title: "Integrate",
-    description: "Integrate your smart devices",
-    icon: iot,
+    title: "Calibration",
+    description: "Our system continously calibrate and improve the processes based on key metrics",
+    icon: webAnalytics,
     width: 34,
     height: 34,
   }

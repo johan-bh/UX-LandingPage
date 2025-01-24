@@ -98,11 +98,11 @@ const Header = () => {
           : "bg-gray-50 dark:bg-gray-800"
       }`}
     >
-      <div className="flex items-center px-8 lg:px-7.5 xl:px-10 max-lg:py-4">
+      <div className="flex items-center px-4 lg:px-6 max-lg:py-4 py-3">
         <a 
           href="/"
           onClick={handleLogoClick}
-          className="block w-[12rem] xl:mr-8"
+          className="block w-[8rem] xl:mr-6"
         >
           <img src={REMedyLogo} alt="REMedy" className="dark:invert" />
         </a>
@@ -110,11 +110,11 @@ const Header = () => {
         <nav
           className={`${
             openNavigation ? "flex" : "hidden"
-          } fixed top-0 left-0 right-0 bottom-0 lg:static lg:flex lg:mx-auto lg:bg-transparent dark:text-white ${
+          } fixed top-0 left-0 right-0 bottom-0 lg:static lg:flex lg:mx-0 lg:ml-auto lg:bg-transparent dark:text-white ${
             openNavigation ? 'bg-white dark:bg-gray-900 backdrop-blur-sm' : ''
           }`}
         >
-          <div className="relative z-2 flex flex-col items-center justify-start w-full pt-20 lg:flex-row lg:pt-0">
+          <div className="relative z-2 flex flex-col items-center justify-start w-full pt-16 lg:flex-row lg:pt-0 lg:items-center">
             {navigation.map((item) => {
               if (item.id === "4") {
                 return null;
@@ -124,7 +124,7 @@ const Header = () => {
                   key={item.id}
                   href={item.url}
                   onClick={(e) => handleNavClick(e, item.url)}
-                  className={`block relative font-code text-2xl uppercase ${
+                  className={`block relative font-code text-xl uppercase ${
                     openNavigation 
                       ? "text-black"
                       : item.highlight 
@@ -132,11 +132,11 @@ const Header = () => {
                         : "text-black/50 dark:text-white/50"
                   } ${
                     item.onlyMobile ? "lg:hidden" : ""
-                  } px-6 py-4 md:py-6 lg:text-xs lg:font-semibold ${
+                  } px-3 py-2 md:py-3 lg:text-[11px] lg:font-semibold ${
                     item.url === pathname.hash
                       ? "text-black dark:text-white"
                       : ""
-                  } lg:leading-5 xl:px-12 hover:no-underline hover:opacity-70 transition-opacity`}
+                  } lg:leading-5 xl:px-6 hover:no-underline hover:opacity-70 transition-opacity`}
                 >
                   {item.title}
                 </a>
@@ -148,7 +148,7 @@ const Header = () => {
         {/* Button for mobile menu toggle */}
         <Button
           className="ml-auto lg:hidden"
-          px="px-3"
+          px="px-2"
           onClick={toggleNavigation}
         >
           <MenuSvg openNavigation={openNavigation} />
