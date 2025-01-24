@@ -10,7 +10,7 @@
   --font-sora: "Sora", sans-serif;
   --font-code: "Source Code Pro", monospace;
   --font-grotesk: "Space Grotesk", sans-serif;
-  color-scheme: light;
+  color-scheme: light dark;
 }
 
 * {
@@ -19,7 +19,7 @@
 
 @layer base {
   body {
-    @apply font-sans bg-white text-black text-base;
+    @apply font-sans bg-white dark:bg-gray-900 text-black dark:text-white text-base;
     min-height: 100vh;
     width: 100%;
     margin: 0;
@@ -1480,4 +1480,43 @@ p:not([class*="border"]):not([class*="relative left-1/2"]) {
     padding-right: 0 !important;
     transform: translateX(-1rem) !important;
   }
+}
+
+/* Add these dark mode overrides */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p {
+  color: #FFFFFF !important;
+}
+
+.dark .bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+.dark #hero {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, rgba(30, 154, 252, 0.1), rgba(26, 117, 255, 0.1)) !important;
+}
+
+.dark .text-gray-300 {
+  color: #D1D5DB !important;
+}
+
+.dark .text-gray-400 {
+  color: #9CA3AF !important;
+}
+
+.dark .text-white {
+  color: #FFFFFF !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: #1F2937 !important;
 }

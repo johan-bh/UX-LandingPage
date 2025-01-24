@@ -609,7 +609,7 @@ const Hero = () => {
 
   return (
     <Section
-      className="pt-[8rem] -mt-[5.25rem] bg-gray-900"
+      className="pt-[8rem] -mt-[5.25rem] bg-gray-900 dark:bg-gray-900"
       crosses
       crossesOffset="lg:translate-y-[5.25rem]"
       customPaddings
@@ -619,7 +619,7 @@ const Hero = () => {
         {/* Platform Section with Image and Info Boxes */}
         <div 
           ref={heroRef}
-          className={`flex flex-col lg:flex-row items-start gap-0 mb-16 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 opacity-0 ${
+          className={`flex flex-col lg:flex-row items-start gap-0 mb-16 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 opacity-0 dark:bg-gray-800 ${
             heroInView ? 'animate-fade-in-up' : ''
           }`}
         >
@@ -881,7 +881,7 @@ const Hero = () => {
 
             {/* Centered Slide Indicator - Responsive positioning */}
             {testimonialsInView && currentTestimonial === 0 && (
-              <div className="absolute top-[65%] md:top-[60%] left-1/2 -translate-x-1/2 translate-y-[275px] md:-translate-y-[100px] z-20">
+              <div className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-20">
                 <motion.div
                   initial="initial"
                   animate="animate"
